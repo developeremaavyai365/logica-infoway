@@ -148,7 +148,6 @@ export const NAV_ITEMS: NavItem[] = [
   },
   { label: "Media", href: "/media" },
   { label: "Careers", href: "/careers" },
-  { label: "Contact Us", href: "/contact" },
 ];
 
 export const CONTACT_EMAIL = "info@logicainfoway.com";
