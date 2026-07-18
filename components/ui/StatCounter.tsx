@@ -19,16 +19,22 @@ export interface StatCounterProps {
  */
 export function StatCounter({ value, duration, className }: StatCounterProps) {
   const match = value.match(STAT_PATTERN);
+  const hasNumber = Boolean(match && match[2]);
 
-  if (!match || !match[2]) {
-    return <span className={className}>{value}</span>;
-  }
-
-  const [, prefix, numRaw, suffix] = match;
+  const numRaw = hasNumber ? match![2] : "0";
   const numeric = parseFloat(numRaw.replace(/,/g, ""));
   const decimals = numRaw.includes(".") ? numRaw.split(".")[1].length : 0;
 
+  // Hooks must run unconditionally on every render — always call useCountUp,
+  // even for non-numeric values (e.g. "Corp & Govt"), and just ignore its
+  // output in that case.
   const { ref, display } = useCountUp<HTMLSpanElement>({ end: numeric, duration, decimals });
+
+  if (!hasNumber) {
+    return <span className={className}>{value}</span>;
+  }
+
+  const [, prefix, , suffix] = match!;
 
   return (
     <span ref={ref} className={className}>
