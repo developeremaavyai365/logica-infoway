@@ -1,0 +1,178 @@
+[
+  {
+    "name": "Acer",
+    "logo": "/brands/acer.png"
+  },
+  {
+    "name": "AMD",
+    "logo": "/brands/amd.svg"
+  },
+  {
+    "name": "AOC",
+    "logo": "/brands/aoc.png"
+  },
+  {
+    "name": "Apple",
+    "logo": "/brands/apple.png"
+  },
+  {
+    "name": "ASUS",
+    "logo": "/brands/asus.png"
+  },
+  {
+    "name": "Avita",
+    "logo": "/brands/avita.png"
+  },
+  {
+    "name": "boAt",
+    "logo": "/brands/boat.svg"
+  },
+  {
+    "name": "Brother",
+    "logo": "/brands/brother.png"
+  },
+  {
+    "name": "Canon",
+    "logo": "/brands/canon.png"
+  },
+  {
+    "name": "Cisco",
+    "logo": "/brands/cisco.svg"
+  },
+  {
+    "name": "Corsair",
+    "logo": "/brands/corsair.png"
+  },
+  {
+    "name": "Crucial",
+    "logo": "/brands/crucial.png"
+  },
+  {
+    "name": "D-Link",
+    "logo": "/brands/d-link.png"
+  },
+  {
+    "name": "Dell",
+    "logo": "/brands/dell.png"
+  },
+  {
+    "name": "Epson",
+    "logo": "/brands/epson.png"
+  },
+  {
+    "name": "EVM",
+    "logo": "/brands/evm.png"
+  },
+  {
+    "name": "Google",
+    "logo": "/brands/google.svg"
+  },
+  {
+    "name": "Hikvision",
+    "logo": "/brands/hikvision.png"
+  },
+  {
+    "name": "Honor",
+    "logo": "/brands/honor.svg"
+  },
+  {
+    "name": "HP",
+    "logo": "/brands/hp.png"
+  },
+  {
+    "name": "Intel",
+    "logo": "/brands/intel.png"
+  },
+  {
+    "name": "itel",
+    "logo": "/brands/itel.png"
+  },
+  {
+    "name": "JBL",
+    "logo": "/brands/jbl.png"
+  },
+  {
+    "name": "Lenovo",
+    "logo": "/brands/lenovo.png"
+  },
+  {
+    "name": "LG",
+    "logo": "/brands/lg.svg"
+  },
+  {
+    "name": "Logitech",
+    "logo": "/brands/logitech.png"
+  },
+  {
+    "name": "Microtek",
+    "logo": "/brands/microtek.png"
+  },
+  {
+    "name": "Motorola",
+    "logo": "/brands/motorola.svg"
+  },
+  {
+    "name": "MSI",
+    "logo": "/brands/msi.svg"
+  },
+  {
+    "name": "Netgear",
+    "logo": "/brands/netgear.svg"
+  },
+  {
+    "name": "Nokia",
+    "logo": "/brands/nokia.png"
+  },
+  {
+    "name": "NVIDIA",
+    "logo": "/brands/nvidia.svg"
+  },
+  {
+    "name": "OnePlus",
+    "logo": "/brands/oneplus.png"
+  },
+  {
+    "name": "OPPO",
+    "logo": "/brands/oppo.png"
+  },
+  {
+    "name": "Quick Heal",
+    "logo": "/brands/quick-heal.png"
+  },
+  {
+    "name": "Realme",
+    "logo": "/brands/realme.png"
+  },
+  {
+    "name": "Samsung",
+    "logo": "/brands/samsung.png"
+  },
+  {
+    "name": "SanDisk",
+    "logo": "/brands/sandisk.png"
+  },
+  {
+    "name": "Seagate",
+    "logo": "/brands/seagate.png"
+  },
+  {
+    "name": "Silicon Power",
+    "logo": "/brands/silicon-power.png"
+  },
+  {
+    "name": "Sony",
+    "logo": "/brands/sony.svg"
+  },
+  {
+    "name": "Vivo",
+    "logo": "/brands/vivo.png"
+  },
+  {
+    "name": "Xiaomi",
+    "logo": "/brands/xiaomi.png"
+  },
+  {
+    "name": "Zebronics",
+    "logo": "/brands/zebronics.png"
+  }
+]

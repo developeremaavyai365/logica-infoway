@@ -1,0 +1,19 @@
+/node_modules
+/.next
+/out
+/build
+.DS_Store
+*.pem
+npm-debug.log*
+.env*.local
+.vercel
+next-env.d.ts
+.eslintcache
+
+# Raw 3D model source archives (heavy, non-web formats) — keep out of the repo.
+/model-sources
+
+# Local tooling / scratch — not part of the deployed site
+.claude/
+tsconfig.tsbuildinfo
+prod_sample.html

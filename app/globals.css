@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ---- Light Corporate ----
+       Palette derived from the Logica logo's tri-color sweep:
+       green (lead) · sky-blue (accent) · yellow (highlight). */
+    --background: 0 0% 100%;
+    --foreground: 222 40% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 40% 12%;
+
+    --muted: 160 14% 96%;
+    --muted-foreground: 210 9% 44%;
+
+    --border: 200 14% 90%;
+    --input: 200 14% 90%;
+    --ring: 152 64% 37%;
+
+    --primary: 152 64% 37%;         /* logo green — brand lead */
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 200 84% 62%;          /* logo sky-blue #78C0F0 */
+    --accent-foreground: 222 47% 11%;
+
+    --highlight: 55 92% 57%;        /* logo yellow #F0F048 */
+    --highlight-foreground: 222 47% 11%;
+
+    --success: 142 68% 42%;
+    --warning: 32 94% 52%;
+    --danger: 0 84% 60%;
+
+    --shadow-color: 200 30% 16%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* ---- Dark Enterprise ----
+       Same logo-derived tri-color, tuned brighter for a near-black canvas. */
+    --background: 220 12% 5%;       /* near-black, faint cool cast */
+    --foreground: 210 12% 96%;
+
+    --card: 220 10% 8%;
+    --card-foreground: 210 12% 96%;
+
+    --muted: 220 8% 14%;
+    --muted-foreground: 215 10% 66%;
+
+    --border: 220 8% 17%;
+    --input: 220 8% 17%;
+    --ring: 150 62% 45%;
+
+    --primary: 150 60% 45%;         /* logo green — brand lead */
+    --primary-foreground: 150 30% 6%;
+
+    --accent: 200 84% 66%;          /* logo sky-blue */
+    --accent-foreground: 220 12% 5%;
+
+    --highlight: 56 92% 62%;        /* logo yellow */
+    --highlight-foreground: 220 12% 5%;
+
+    --success: 142 62% 52%;
+    --warning: 36 92% 60%;
+    --danger: 0 72% 62%;
+
+    --shadow-color: 0 0% 0%;
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Respect reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-brand-gradient bg-clip-text text-transparent;
+  }
+
+  .glass {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+
+  /* Pause brand marquee when hovering anywhere on the row */
+  .marquee-row:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+/* Dual-thumb price range slider — two overlaid range inputs.
+   The input is transparent and click-through; only the thumbs are interactive. */
+.price-range {
+  -webkit-appearance: none;
+  appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background: transparent;
+  pointer-events: none;
+}
+.price-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: auto;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.price-range::-moz-range-thumb {
+  pointer-events: auto;
+  height: 16px;
+  width: 16px;
+  border-radius: 9999px;
+  background: #ffffff;
+  border: 2px solid rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+.price-range::-moz-range-track {
+  background: transparent;
+}
