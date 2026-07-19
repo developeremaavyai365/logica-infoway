@@ -18,11 +18,10 @@ export function KanvaPhilosophySection() {
       </ParallaxLayer>
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
-        <h2
-          className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.04em]"
-          style={{ color: KANVA_ACCENTS.mint }}
-        >
-          Built on trust, not just transactions
+        <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.04em]">
+          <span className="type-reveal-heading" style={{ color: KANVA_ACCENTS.mint }}>
+            Built on trust, not just transactions
+          </span>
         </h2>
 
         <div className="mt-10 space-y-6 text-left">

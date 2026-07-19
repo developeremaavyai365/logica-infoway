@@ -116,6 +116,54 @@
   }
 }
 
+/* Typewriter-style heading reveal — a left-to-right clip wipe (robust for
+   wrapped, centered, multi-line text, unlike a literal monospace
+   width/steps() typewriter) plus a blinking cursor that lands at the end
+   of the reveal. Runs once on mount, no scroll trigger. */
+@keyframes type-reveal {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes type-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.type-reveal-heading {
+  display: inline-block;
+  position: relative;
+  animation: type-reveal 1.6s steps(32, end) forwards;
+}
+
+.type-reveal-heading::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0.08em;
+  bottom: 0.08em;
+  width: 3px;
+  background: currentColor;
+  opacity: 0;
+  animation: type-cursor-blink 0.6s step-end infinite;
+  animation-delay: 1.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .type-reveal-heading {
+    animation: none;
+    clip-path: none;
+  }
+  .type-reveal-heading::after {
+    display: none;
+  }
+}
+
 /* Dual-thumb price range slider — two overlaid range inputs.
    The input is transparent and click-through; only the thumbs are interactive. */
 .price-range {
