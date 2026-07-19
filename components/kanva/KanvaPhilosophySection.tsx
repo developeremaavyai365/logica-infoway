@@ -1,8 +1,52 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
 import { KANVA_ACCENTS, KANVA_PHILOSOPHY } from "@/lib/kanva";
 import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
+import { cn } from "@/lib/utils";
+
+/** Typewriter-style clip reveal for the heading, driven by a plain
+ *  IntersectionObserver + CSS transition instead of Framer Motion's
+ *  whileInView — that route silently failed to fire even with the element
+ *  fully inside the viewport. This is directly debuggable and replays every
+ *  time the heading scrolls in or out of view. */
+function TypeRevealHeading({ text, color }: { text: string; color: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setInView(entry.isIntersecting),
+      { threshold: 0, rootMargin: "0px 0px -5% 0px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <span
+      ref={ref}
+      className={cn(
+        "relative inline-block transition-[clip-path] duration-[1100ms] ease-[cubic-bezier(0.65,0,0.35,1)]",
+        inView ? "[clip-path:inset(0_0%_0_0)]" : "[clip-path:inset(0_100%_0_0)]",
+      )}
+      style={{ color }}
+    >
+      {text}
+      <span
+        aria-hidden
+        className={cn(
+          "absolute right-0 top-[0.08em] bottom-[0.08em] w-[3px] transition-opacity duration-300",
+          inView ? "animate-pulse opacity-100" : "opacity-0",
+        )}
+        style={{ background: "currentColor" }}
+      />
+    </span>
+  );
+}
 
 /** "Why Logica Infoway" section — one unified flowing block of copy, no
  *  cards/dividers/boxes separating the individual points. The heading
@@ -23,25 +67,7 @@ export function KanvaPhilosophySection() {
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.04em]">
-          <motion.span
-            className="relative inline-block"
-            style={{ color: KANVA_ACCENTS.mint }}
-            initial={{ clipPath: "inset(0 100% 0 0)" }}
-            whileInView={{ clipPath: "inset(0 0% 0 0)" }}
-            viewport={{ once: false, amount: 0.1, margin: "0px 0px -10% 0px" }}
-            transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1] }}
-          >
-            Built on trust, not just transactions
-            <motion.span
-              aria-hidden
-              className="absolute right-0 top-[0.08em] bottom-[0.08em] w-[3px]"
-              style={{ background: "currentColor" }}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: [0, 1, 1, 0, 0, 1, 1, 0] }}
-              viewport={{ once: false, amount: 0.1, margin: "0px 0px -10% 0px" }}
-              transition={{ duration: 1.7, delay: 1.1, repeat: Infinity, ease: "linear" }}
-            />
-          </motion.span>
+          <TypeRevealHeading text="Built on trust, not just transactions" color={KANVA_ACCENTS.mint} />
         </h2>
 
         <div className="mt-10 space-y-6 text-left">
