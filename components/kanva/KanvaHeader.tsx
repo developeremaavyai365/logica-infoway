@@ -72,16 +72,27 @@ function NavDropdown({
 
       <AnimatePresence>
         {open && item.children && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 8 }}
-            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+          <div
             className={cn(
-              "absolute top-full pt-3",
-              isShop ? "left-1/2 w-[min(64rem,92vw)] -translate-x-1/2" : "left-0 w-72",
+              "pt-3",
+              isShop
+                ? // Centered on the viewport, not the (narrow, left-of-center) Shop
+                  // trigger — an `absolute left-1/2` here would center against the
+                  // trigger's own small width and push the wide panel off-screen.
+                  // Positioning lives on this plain wrapper, not the motion.div
+                  // below — Framer Motion's `y` animation writes its own inline
+                  // `transform`, which would silently clobber a class-based
+                  // `-translate-x-1/2` on the same element.
+                  "fixed left-1/2 top-[4.5rem] w-[min(64rem,92vw)] -translate-x-1/2"
+                : "absolute top-full left-0 w-72",
             )}
           >
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            >
             <div className={cn("overflow-hidden rounded-2xl border p-2", panelClass, isShop && "p-4")}>
               {isShop ? (
                 <>
@@ -159,7 +170,8 @@ function NavDropdown({
                 ))
               )}
             </div>
-          </motion.div>
+            </motion.div>
+          </div>
         )}
       </AnimatePresence>
     </div>
