@@ -3,18 +3,28 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_MISSION } from "@/lib/kanva";
+import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
 /** Quiet mid-page breather — deliberate pause after the product showcase.
  *  Copy is the company's real published philosophy statement (Careers page). */
 export function KanvaMissionSection() {
   return (
-    <section className="relative bg-white px-6 py-28 lg:py-40">
+    <section className="relative overflow-hidden bg-white px-6 py-28 lg:py-40">
+      <ParallaxLayer speed={0.5} scaleDepth>
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(ellipse 65% 55% at 50% 40%, ${KANVA_ACCENTS.sky}0d, transparent 60%)`,
+          }}
+        />
+      </ParallaxLayer>
+
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="show"
         viewport={viewportOnce}
-        className="mx-auto max-w-3xl text-center"
+        className="relative z-10 mx-auto max-w-3xl text-center"
       >
         <motion.p
           variants={fadeUp}

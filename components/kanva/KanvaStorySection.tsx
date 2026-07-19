@@ -5,18 +5,20 @@ import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_STORY } from "@/lib/kanva";
 import { BlurTextHeading, GradientShimmer } from "@/components/kanva/KanvaTextEffects";
 import { LogoWall } from "@/components/ui/LogoBadge";
+import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
 /** Deeper legacy narrative, lower on the page — real facts only, no invented milestones. */
 export function KanvaStorySection() {
   return (
     <section className="relative overflow-hidden border-t border-neutral-200 bg-white px-6 py-24 lg:px-10 lg:py-32">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: `radial-gradient(ellipse 60% 45% at 15% 100%, ${KANVA_ACCENTS.gold}0d, transparent 60%)`,
-        }}
-      />
+      <ParallaxLayer speed={0.55} scaleDepth>
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(ellipse 60% 45% at 15% 100%, ${KANVA_ACCENTS.gold}0d, transparent 60%)`,
+          }}
+        />
+      </ParallaxLayer>
 
       <div className="relative z-10 mx-auto max-w-[90rem]">
         <motion.div

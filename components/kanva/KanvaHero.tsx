@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { KANVA_HERO_SLIDES } from "@/lib/kanva";
+import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
 const INTERVAL = 5500;
 const CROSSFADE = 1;
@@ -74,7 +75,9 @@ export function KanvaHero() {
             />
 
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/75 via-black/35 to-black/10" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+            <ParallaxLayer speed={0.35}>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/30" />
+            </ParallaxLayer>
 
             <div className="relative z-10 mx-auto flex h-full max-w-[90rem] flex-col justify-end px-6 pb-14 pt-28 lg:justify-center lg:px-10 lg:pb-20 lg:pt-32">
               <motion.div

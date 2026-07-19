@@ -6,18 +6,20 @@ import { LuArrowRight, LuPhone } from "react-icons/lu";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_CLOSING_CTA } from "@/lib/kanva";
 import { BlurTextHeading, GradientShimmer } from "@/components/kanva/KanvaTextEffects";
+import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
 /** Final conversion moment before the footer — real /shop path + published order line. */
 export function KanvaClosingCta() {
   return (
     <section className="relative overflow-hidden border-t border-neutral-200 bg-white px-6 py-24 text-center lg:py-32">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: `radial-gradient(ellipse 60% 60% at 50% 100%, ${KANVA_ACCENTS.violet}0d, transparent 65%)`,
-        }}
-      />
+      <ParallaxLayer speed={0.55} scaleDepth>
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `radial-gradient(ellipse 60% 60% at 50% 100%, ${KANVA_ACCENTS.violet}0d, transparent 65%)`,
+          }}
+        />
+      </ParallaxLayer>
 
       <motion.div
         variants={staggerContainer}
