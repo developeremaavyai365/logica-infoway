@@ -28,7 +28,7 @@ export function KanvaPhilosophySection() {
             style={{ color: KANVA_ACCENTS.mint }}
             initial={{ clipPath: "inset(0 100% 0 0)" }}
             whileInView={{ clipPath: "inset(0 0% 0 0)" }}
-            viewport={{ once: false, amount: 0.6 }}
+            viewport={{ once: false, amount: 0.1, margin: "0px 0px -10% 0px" }}
             transition={{ duration: 1.1, ease: [0.65, 0, 0.35, 1] }}
           >
             Built on trust, not just transactions
@@ -38,7 +38,7 @@ export function KanvaPhilosophySection() {
               style={{ background: "currentColor" }}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: [0, 1, 1, 0, 0, 1, 1, 0] }}
-              viewport={{ once: false, amount: 0.6 }}
+              viewport={{ once: false, amount: 0.1, margin: "0px 0px -10% 0px" }}
               transition={{ duration: 1.7, delay: 1.1, repeat: Infinity, ease: "linear" }}
             />
           </motion.span>
