@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 
 /** Routes that use the cinematic KanvaHeader instead of the corporate chrome. */
-const CINEMATIC_PREFIXES = ["/shop", "/product", "/cart", "/wishlist", "/compare", "/account"];
+const CINEMATIC_PREFIXES = ["/shop", "/product", "/cart", "/wishlist", "/compare", "/account", "/media"];
 
 function usesCinematicChrome(pathname: string) {
   if (pathname === "/") return true;

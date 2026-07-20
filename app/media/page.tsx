@@ -38,8 +38,8 @@ export default function MediaPage() {
 
   return (
     <main className="bg-white text-neutral-900">
-      {/* Hero */}
-      <Section className="pb-10 pt-16 sm:pt-20">
+      {/* Hero — pt-28 clears the fixed KanvaHeader used across the store shell */}
+      <Section className="pb-10 pt-28 sm:pt-32">
         <Container>
           <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#0F9D58]">Newsroom</p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-0.03em] text-neutral-900 lg:text-5xl">
