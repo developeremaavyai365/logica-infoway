@@ -8,10 +8,18 @@ export interface NavChild {
   description?: string;
 }
 
+export interface NavMegaCategory {
+  label: string;
+  href?: string;
+  children?: { label: string; href: string }[];
+}
+
 export interface NavItem {
   label: string;
   href: string;
   children?: NavChild[];
+  /** Multi-column mega-menu (categories + sub-links), e.g. Shop, Investor. */
+  mega?: NavMegaCategory[];
 }
 
 /** All product categories — shown only inside the Shop dropdown. */
@@ -119,6 +127,63 @@ export const SHOP_MEGA: ShopMegaCategory[] = [
   },
 ];
 
+/** Real Investor mega-menu, mirrored from logicainfoway.com's header nav
+ *  (Performance / Shareholder Information / Fund Raising / Stock Exchange /
+ *  Group Companies). "Annual Report" points at our own built page; every
+ *  other item links to the real source page — building 20+ individual
+ *  investor-relations pages is out of scope right now, and a real external
+ *  link beats a fabricated or dead internal one. */
+const LIW = "https://www.logicainfoway.com";
+
+export const INVESTOR_MEGA: NavMegaCategory[] = [
+  {
+    label: "Performance",
+    children: [
+      { label: "Annual Report", href: "/investor/annual-reports" },
+      { label: "Annual Return", href: `${LIW}/annual-return/` },
+      { label: "Board Meeting", href: `${LIW}/notice-of-board-meeting/` },
+      { label: "Financial Results", href: `${LIW}/financial-results/` },
+      { label: "General Meeting", href: `${LIW}/general-meeting/` },
+      { label: "Secretarial Compliance", href: `${LIW}/secretarial-compliance/` },
+      { label: "Projects", href: `${LIW}/projects/` },
+    ],
+  },
+  {
+    label: "Shareholder Information",
+    children: [
+      { label: "Notice", href: `${LIW}/notice/` },
+      { label: "Board Meeting", href: `${LIW}/board-meeting/` },
+      { label: "General Meeting", href: `${LIW}/notice-of-general-meeting/` },
+      { label: "Committee Meeting", href: `${LIW}/committee-meeting/` },
+      { label: "Policies", href: `${LIW}/policies/` },
+      { label: "Advertisement", href: `${LIW}/advertisement/` },
+      { label: "Material Creditors", href: `${LIW}/material-creditors/` },
+      { label: "Basis Of Allotment", href: `${LIW}/basis-of-allotment/` },
+      { label: "Shareholding Pattern", href: `${LIW}/shareholding-pattern/` },
+      { label: "Familiarization Program", href: `${LIW}/familiarization-program/` },
+    ],
+  },
+  {
+    label: "Fund Raising",
+    children: [
+      { label: "Fund Raising", href: `${LIW}/fund-raising/` },
+      { label: "Prospectus", href: `${LIW}/prospectus/` },
+    ],
+  },
+  {
+    label: "Stock Exchange",
+    children: [
+      { label: "Corporate Announcement", href: `${LIW}/compliances/` },
+      { label: "Authorized Person", href: `${LIW}/authorized-person/` },
+      { label: "Grievance Redressal", href: `${LIW}/grievance-redressal/` },
+    ],
+  },
+  {
+    label: "Group Companies",
+    href: `${LIW}/group-companies/`,
+  },
+];
+
 export const NAV_ITEMS: NavItem[] = [
   { label: "Home", href: "/" },
   {
@@ -138,13 +203,8 @@ export const NAV_ITEMS: NavItem[] = [
   },
   {
     label: "Investor",
-    href: "/investor",
-    children: [
-      { label: "Annual Reports", href: "/investor/annual-reports", description: "Yearly financial reports" },
-      { label: "Financial Results", href: "/investor/financials", description: "Quarterly & annual results" },
-      { label: "Shareholding Pattern", href: "/investor/shareholding", description: "Ownership structure" },
-      { label: "Announcements", href: "/investor/announcements", description: "Corporate disclosures" },
-    ],
+    href: "/investor/annual-reports",
+    mega: INVESTOR_MEGA,
   },
   { label: "Media", href: "/media" },
   { label: "Careers", href: "/careers" },

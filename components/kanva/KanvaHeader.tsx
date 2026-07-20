@@ -26,6 +26,16 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(href + "/");
 }
 
+function isExternal(href: string) {
+  return href.startsWith("http");
+}
+
+/** External real logicainfoway.com links open in a new tab — clicking one
+ *  shouldn't navigate this site away entirely. */
+function externalProps(href: string) {
+  return isExternal(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
+}
+
 function NavDropdown({
   item,
   pathname,
@@ -38,6 +48,8 @@ function NavDropdown({
   const [open, setOpen] = useState(false);
   const active = isActive(pathname, item.href);
   const isShop = item.label === "Shop";
+  const megaCategories = isShop ? SHOP_MEGA : item.mega;
+  const isMega = Boolean(megaCategories);
 
   const triggerClass =
     variant === "dark"
@@ -71,18 +83,19 @@ function NavDropdown({
       </Link>
 
       <AnimatePresence>
-        {open && item.children && (
+        {open && (item.children || megaCategories) && (
           <div
             className={cn(
               "pt-3",
-              isShop
-                ? // Centered on the viewport, not the (narrow, left-of-center) Shop
-                  // trigger — an `absolute left-1/2` here would center against the
-                  // trigger's own small width and push the wide panel off-screen.
-                  // Positioning lives on this plain wrapper, not the motion.div
-                  // below — Framer Motion's `y` animation writes its own inline
-                  // `transform`, which would silently clobber a class-based
-                  // `-translate-x-1/2` on the same element.
+              isMega
+                ? // Centered on the viewport, not the (narrow, left-of-center)
+                  // trigger — an `absolute left-1/2` here would center against
+                  // the trigger's own small width and push the wide panel
+                  // off-screen. Positioning lives on this plain wrapper, not
+                  // the motion.div below — Framer Motion's `y` animation
+                  // writes its own inline `transform`, which would silently
+                  // clobber a class-based `-translate-x-1/2` on the same
+                  // element.
                   "fixed left-1/2 top-[4.5rem] w-[min(64rem,92vw)] -translate-x-1/2"
                 : "absolute top-full left-0 w-72",
             )}
@@ -93,39 +106,54 @@ function NavDropdown({
               exit={{ opacity: 0, y: 8 }}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             >
-            <div className={cn("overflow-hidden rounded-2xl border p-2", panelClass, isShop && "p-4")}>
-              {isShop ? (
+            <div className={cn("overflow-hidden rounded-2xl border p-2", panelClass, isMega && "p-4")}>
+              {megaCategories ? (
                 <>
-                  <Link
-                    href="/shop/deals"
-                    className={cn(
-                      "mb-3 flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors",
-                      variant === "dark"
-                        ? "bg-white/[0.06] text-white hover:bg-white/10"
-                        : "bg-muted font-semibold text-foreground",
-                    )}
-                  >
-                    Deal Of The Day
-                    <span className="text-xs font-normal text-white/40">Today&apos;s best offer →</span>
-                  </Link>
+                  {isShop && (
+                    <Link
+                      href="/shop/deals"
+                      className={cn(
+                        "mb-3 flex items-center justify-between rounded-xl px-4 py-3 text-sm font-semibold transition-colors",
+                        variant === "dark"
+                          ? "bg-white/[0.06] text-white hover:bg-white/10"
+                          : "bg-muted font-semibold text-foreground",
+                      )}
+                    >
+                      Deal Of The Day
+                      <span className="text-xs font-normal text-white/40">Today&apos;s best offer →</span>
+                    </Link>
+                  )}
                   <div className="gap-x-4 [column-fill:_balance] sm:columns-3 lg:columns-5">
-                    {SHOP_MEGA.map((cat) => (
-                      <div key={cat.href} className="mb-4 break-inside-avoid">
-                        <Link
-                          href={cat.href}
-                          className={cn(
-                            "block rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors",
-                            variant === "dark" ? "text-white hover:bg-white/[0.06]" : "text-foreground hover:bg-muted",
-                          )}
-                        >
-                          {cat.label}
-                        </Link>
+                    {megaCategories.map((cat) => (
+                      <div key={cat.label} className="mb-4 break-inside-avoid">
+                        {cat.href ? (
+                          <Link
+                            href={cat.href}
+                            {...externalProps(cat.href)}
+                            className={cn(
+                              "block rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors",
+                              variant === "dark" ? "text-white hover:bg-white/[0.06]" : "text-foreground hover:bg-muted",
+                            )}
+                          >
+                            {cat.label}
+                          </Link>
+                        ) : (
+                          <p
+                            className={cn(
+                              "px-3 py-1.5 text-sm font-semibold",
+                              variant === "dark" ? "text-white" : "text-foreground",
+                            )}
+                          >
+                            {cat.label}
+                          </p>
+                        )}
                         {cat.children && (
                           <div className="mt-0.5">
                             {cat.children.map((child) => (
                               <Link
                                 key={child.href}
                                 href={child.href}
+                                {...externalProps(child.href)}
                                 className={cn(
                                   "block rounded-lg px-3 py-1.5 text-[13px] transition-colors",
                                   variant === "dark"
@@ -141,21 +169,24 @@ function NavDropdown({
                       </div>
                     ))}
                   </div>
-                  <Link
-                    href="/shop"
-                    className={cn(
-                      "mt-1 block rounded-xl px-4 py-2 text-center text-xs font-medium transition-colors",
-                      variant === "dark" ? "text-white/40 hover:text-white/70" : "text-muted-foreground hover:text-foreground",
-                    )}
-                  >
-                    View all products →
-                  </Link>
+                  {isShop && (
+                    <Link
+                      href="/shop"
+                      className={cn(
+                        "mt-1 block rounded-xl px-4 py-2 text-center text-xs font-medium transition-colors",
+                        variant === "dark" ? "text-white/40 hover:text-white/70" : "text-muted-foreground hover:text-foreground",
+                      )}
+                    >
+                      View all products →
+                    </Link>
+                  )}
                 </>
               ) : (
-                item.children.map((child) => (
+                item.children?.map((child) => (
                   <Link
                     key={child.href}
                     href={child.href}
+                    {...externalProps(child.href)}
                     className={cn("block rounded-xl px-4 py-2.5 text-sm transition-colors", linkClass)}
                   >
                     <span className={cn("block font-medium", variant === "dark" ? "text-white/90" : "text-foreground")}>
@@ -291,7 +322,7 @@ export function KanvaHeader() {
           >
             <nav className="px-4 py-4">
               {NAV_ITEMS.map((item) => {
-                if (!item.children) {
+                if (!item.children && !item.mega) {
                   return (
                     <Link
                       key={item.href}
@@ -327,7 +358,7 @@ export function KanvaHeader() {
                           className="overflow-hidden"
                         >
                           <div className="ml-3 border-l border-white/10 pl-3 pb-2">
-                            {item.children.map((child) => (
+                            {item.children?.map((child) => (
                               <Link
                                 key={child.href + child.label}
                                 href={child.href}
@@ -336,6 +367,33 @@ export function KanvaHeader() {
                               >
                                 {child.label}
                               </Link>
+                            ))}
+                            {item.mega?.map((cat) => (
+                              <div key={cat.label} className="mt-2 first:mt-0">
+                                {cat.href ? (
+                                  <Link
+                                    href={cat.href}
+                                    {...externalProps(cat.href)}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="block rounded-lg px-4 py-2 text-sm font-semibold text-white/80 transition-colors hover:bg-white/[0.06] hover:text-white"
+                                  >
+                                    {cat.label}
+                                  </Link>
+                                ) : (
+                                  <p className="px-4 py-2 text-sm font-semibold text-white/80">{cat.label}</p>
+                                )}
+                                {cat.children?.map((child) => (
+                                  <Link
+                                    key={child.href + child.label}
+                                    href={child.href}
+                                    {...externalProps(child.href)}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="block rounded-lg py-2 pl-6 pr-4 text-sm text-white/55 transition-colors hover:bg-white/[0.06] hover:text-white"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                ))}
+                              </div>
                             ))}
                           </div>
                         </motion.div>
