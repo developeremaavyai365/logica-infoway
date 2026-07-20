@@ -250,7 +250,7 @@ export function KanvaHeader() {
           {/* Corporate nav — product categories live under Shop only */}
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 md:flex lg:gap-8">
             {NAV_ITEMS.map((item) =>
-              item.children ? (
+              item.children || item.mega ? (
                 <NavDropdown key={item.href} item={item} pathname={pathname} variant="dark" />
               ) : (
                 <Link

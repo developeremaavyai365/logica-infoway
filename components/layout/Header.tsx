@@ -16,12 +16,22 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(href + "/");
 }
 
+/** This nav doesn't render mega-menu categories — flattens a `mega` tree
+ *  into a plain list so items like Investor still show something useful
+ *  here instead of falling back to a dead single link. */
+function flattenMega(item: NavItem): { label: string; href: string; description?: string }[] | undefined {
+  if (item.children) return item.children;
+  if (!item.mega) return undefined;
+  return item.mega.flatMap((cat) => cat.children ?? (cat.href ? [{ label: cat.label, href: cat.href }] : []));
+}
+
 /** Desktop nav item — plain link, or a hover/focus dropdown when it has children. */
 function NavLink({ item, pathname }: { item: NavItem; pathname: string }) {
   const [open, setOpen] = useState(false);
   const active = isActive(pathname, item.href);
+  const children = flattenMega(item);
 
-  if (!item.children) {
+  if (!children) {
     return (
       <Link
         href={item.href}
@@ -68,7 +78,7 @@ function NavLink({ item, pathname }: { item: NavItem; pathname: string }) {
             className="absolute left-0 top-full z-50 w-72 pt-2"
           >
             <div className="overflow-hidden rounded-xl border border-border bg-card p-2 shadow-elevated">
-              {item.children.map((child) => (
+              {children.map((child) => (
                 <Link
                   key={child.href}
                   href={child.href}

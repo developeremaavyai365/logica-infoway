@@ -5,10 +5,19 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiChevronDown, FiX } from "react-icons/fi";
-import { NAV_ITEMS } from "@/lib/nav";
+import { NAV_ITEMS, type NavItem } from "@/lib/nav";
 import { Logo } from "@/components/brand/Logo";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { cn } from "@/lib/utils";
+
+/** This drawer doesn't render mega-menu categories — flattens a `mega` tree
+ *  into a plain list so items like Investor still show something useful
+ *  here instead of falling back to a dead single link. */
+function flattenMega(item: NavItem): { label: string; href: string; description?: string }[] | undefined {
+  if (item.children) return item.children;
+  if (!item.mega) return undefined;
+  return item.mega.flatMap((cat) => cat.children ?? (cat.href ? [{ label: cat.label, href: cat.href }] : []));
+}
 
 interface MobileNavProps {
   open: boolean;
@@ -73,7 +82,8 @@ export function MobileNav({ open, onClose, pathname }: MobileNavProps) {
             <nav className="flex-1 overflow-y-auto p-2">
               {NAV_ITEMS.map((item) => {
                 const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-                if (!item.children) {
+                const children = flattenMega(item);
+                if (!children) {
                   return (
                     <Link
                       key={item.href}
@@ -113,7 +123,7 @@ export function MobileNav({ open, onClose, pathname }: MobileNavProps) {
                           className="overflow-hidden"
                         >
                           <div className="ml-3 border-l border-border pl-3">
-                            {item.children.map((child) => (
+                            {children.map((child) => (
                               <Link
                                 key={child.href}
                                 href={child.href}
