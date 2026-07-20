@@ -141,11 +141,11 @@ export const INVESTOR_MEGA: NavMegaCategory[] = [
     children: [
       { label: "Annual Report", href: "/investor/annual-reports" },
       { label: "Annual Return", href: "/investor/annual-return" },
-      { label: "Board Meeting", href: `${LIW}/notice-of-board-meeting/` },
-      { label: "Financial Results", href: `${LIW}/financial-results/` },
-      { label: "General Meeting", href: `${LIW}/general-meeting/` },
-      { label: "Secretarial Compliance", href: `${LIW}/secretarial-compliance/` },
-      { label: "Projects", href: `${LIW}/projects/` },
+      { label: "Board Meeting", href: "/investor/board-meeting" },
+      { label: "Financial Results", href: "/investor/financial-results" },
+      { label: "General Meeting", href: "/investor/general-meeting" },
+      { label: "Secretarial Compliance", href: "/investor/secretarial-compliance" },
+      { label: "Projects", href: "/investor/projects" },
     ],
   },
   {

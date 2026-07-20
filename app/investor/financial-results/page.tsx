@@ -1,0 +1,47 @@
+import type { Metadata } from "next";
+import { LuDownload, LuFileText } from "react-icons/lu";
+import { Container, Section } from "@/components/ui/Section";
+import { KANVA_ACCENTS } from "@/lib/kanva";
+import { FINANCIAL_RESULTS } from "@/lib/investor";
+
+export const metadata: Metadata = {
+  title: "Financial Results | Logica Infoway",
+  description: "Half-yearly and annual financial results of Logica Infoway Limited.",
+};
+
+export default function FinancialResultsPage() {
+  return (
+    <main className="bg-white text-neutral-900">
+      {/* pt-28 clears the fixed KanvaHeader used across the store shell */}
+      <Section className="pb-16 pt-28 sm:pt-32">
+        <Container size="narrow">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em]" style={{ color: KANVA_ACCENTS.mint }}>
+            Investor
+          </p>
+          <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-0.03em] text-neutral-900 lg:text-5xl">
+            Financial Results
+          </h1>
+
+          <ul className="mt-10 divide-y divide-neutral-200 rounded-2xl border border-neutral-200">
+            {FINANCIAL_RESULTS.map((report) => (
+              <li key={report.url}>
+                <a
+                  href={report.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between gap-4 px-6 py-4 transition-colors hover:bg-neutral-50"
+                >
+                  <span className="flex items-center gap-3">
+                    <LuFileText className="h-5 w-5 shrink-0" style={{ color: KANVA_ACCENTS.mint }} />
+                    <span className="font-medium text-neutral-900">{report.title}</span>
+                  </span>
+                  <LuDownload className="h-4 w-4 shrink-0 text-neutral-400 transition-colors group-hover:text-neutral-900" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </Container>
+      </Section>
+    </main>
+  );
+}
