@@ -39,3 +39,37 @@ export const ANNUAL_REPORTS: AnnualReport[] = [
     url: "https://www.logicainfoway.com/wp-content/uploads/2022/08/Annual-Report-F-Y-2019-20.pdf",
   },
 ];
+
+/** Real annual returns (MGT forms), mirrored from logicainfoway.com/annual-return. */
+export const ANNUAL_RETURNS: AnnualReport[] = [
+  {
+    title: "Annual Return 2024-25",
+    year: "2024-25",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2026/03/Annual-Return-2024-25.pdf",
+  },
+  {
+    title: "Annual Return 2023-24",
+    year: "2023-24",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2024/10/Annual-Return-2023-24-2.pdf",
+  },
+  {
+    title: "Annual Return 2022-23",
+    year: "2022-23",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2024/03/Annual-Return-2022-23.pdf",
+  },
+  {
+    title: "Annual Return 2021-22",
+    year: "2021-22",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2023/01/ANNUAL-RETURN-21-22.pdf",
+  },
+  {
+    title: "Annual Return 2020-21",
+    year: "2020-21",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/08/ELIL-MGT-F-Y-2020-21.pdf",
+  },
+  {
+    title: "Annual Return 2019-20",
+    year: "2019-20",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/08/ELIL-MGT-2019-20.pdf",
+  },
+];
