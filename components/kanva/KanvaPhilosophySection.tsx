@@ -56,12 +56,6 @@ function TypeRevealHeading({ text, color }: { text: string; color: string }) {
 export function KanvaPhilosophySection() {
   return (
     <section className="relative overflow-hidden bg-white px-6 py-20 lg:px-10 lg:py-28">
-      <ParallaxLayer speed={0.35} scaleDepth>
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url(/images/philosophy-bg.jpg)" }}
-        />
-      </ParallaxLayer>
       <ParallaxLayer speed={0.5} scaleDepth>
         <div
           className="absolute inset-0"
