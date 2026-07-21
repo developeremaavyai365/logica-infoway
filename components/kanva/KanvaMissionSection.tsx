@@ -3,21 +3,24 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_MISSION } from "@/lib/kanva";
-import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
 /** Quiet mid-page breather — deliberate pause after the product showcase.
  *  Copy is the company's real published philosophy statement (Careers page). */
 export function KanvaMissionSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-sky-200 via-sky-100 to-blue-100 px-6 py-28 lg:py-40">
-      <ParallaxLayer speed={0.5} scaleDepth>
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 65% 55% at 50% 40%, ${KANVA_ACCENTS.sky}0d, transparent 60%)`,
-          }}
-        />
-      </ParallaxLayer>
+    <section className="relative overflow-hidden bg-neutral-950 px-6 py-28 lg:py-40">
+      <video
+        src="/videos/mission-bg.mp4"
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="metadata"
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* Dark wash keeps the video visible while giving the text enough contrast */}
+      <div className="absolute inset-0 bg-neutral-950/70" />
 
       <motion.div
         variants={staggerContainer}
@@ -45,7 +48,7 @@ export function KanvaMissionSection() {
             <motion.p
               key={i}
               variants={fadeUp}
-              className="text-base leading-relaxed text-neutral-600 lg:text-lg"
+              className="text-base leading-relaxed text-white/80 lg:text-lg"
             >
               {p}
             </motion.p>
