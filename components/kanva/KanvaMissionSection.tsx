@@ -9,7 +9,7 @@ import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
  *  Copy is the company's real published philosophy statement (Careers page). */
 export function KanvaMissionSection() {
   return (
-    <section className="relative overflow-hidden bg-sky-50/50 px-6 py-28 lg:py-40">
+    <section className="relative overflow-hidden bg-sky-100 px-6 py-28 lg:py-40">
       <ParallaxLayer speed={0.5} scaleDepth>
         <div
           className="absolute inset-0"

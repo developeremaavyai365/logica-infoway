@@ -11,7 +11,7 @@ import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 /** Final conversion moment before the footer — real /shop path + published order line. */
 export function KanvaClosingCta() {
   return (
-    <section className="relative overflow-hidden border-t border-neutral-200 bg-violet-50/50 px-6 py-24 text-center lg:py-32">
+    <section className="relative overflow-hidden border-t border-neutral-200 bg-violet-100 px-6 py-24 text-center lg:py-32">
       <ParallaxLayer speed={0.55} scaleDepth>
         <div
           className="absolute inset-0"
