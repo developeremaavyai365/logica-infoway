@@ -129,10 +129,10 @@ export const SHOP_MEGA: ShopMegaCategory[] = [
 
 /** Real Investor mega-menu, mirrored from logicainfoway.com's header nav
  *  (Performance / Shareholder Information / Fund Raising / Stock Exchange /
- *  Group Companies). "Annual Report" points at our own built page; every
- *  other item links to the real source page — building 20+ individual
- *  investor-relations pages is out of scope right now, and a real external
- *  link beats a fabricated or dead internal one. */
+ *  Group Companies). Every item points at its own built page. "Advertisement"
+ *  and "Basis Of Allotment" are exceptions — the source site's main content
+ *  area for both is genuinely empty (verified), so they link to the real
+ *  external page rather than mirroring nothing. */
 const LIW = "https://www.logicainfoway.com";
 
 export const INVESTOR_MEGA: NavMegaCategory[] = [
@@ -151,36 +151,36 @@ export const INVESTOR_MEGA: NavMegaCategory[] = [
   {
     label: "Shareholder Information",
     children: [
-      { label: "Notice", href: `${LIW}/notice/` },
-      { label: "Board Meeting", href: `${LIW}/board-meeting/` },
-      { label: "General Meeting", href: `${LIW}/notice-of-general-meeting/` },
-      { label: "Committee Meeting", href: `${LIW}/committee-meeting/` },
-      { label: "Policies", href: `${LIW}/policies/` },
+      { label: "Notice", href: "/investor/notice" },
+      { label: "Board Meeting", href: "/investor/shareholder-board-meeting" },
+      { label: "General Meeting", href: "/investor/shareholder-general-meeting" },
+      { label: "Committee Meeting", href: "/investor/committee-meeting" },
+      { label: "Policies", href: "/investor/policies" },
       { label: "Advertisement", href: `${LIW}/advertisement/` },
-      { label: "Material Creditors", href: `${LIW}/material-creditors/` },
+      { label: "Material Creditors", href: "/investor/material-creditors" },
       { label: "Basis Of Allotment", href: `${LIW}/basis-of-allotment/` },
-      { label: "Shareholding Pattern", href: `${LIW}/shareholding-pattern/` },
-      { label: "Familiarization Program", href: `${LIW}/familiarization-program/` },
+      { label: "Shareholding Pattern", href: "/investor/shareholding-pattern" },
+      { label: "Familiarization Program", href: "/investor/familiarization-program" },
     ],
   },
   {
     label: "Fund Raising",
     children: [
-      { label: "Fund Raising", href: `${LIW}/fund-raising/` },
-      { label: "Prospectus", href: `${LIW}/prospectus/` },
+      { label: "Fund Raising", href: "/investor/fund-raising" },
+      { label: "Prospectus", href: "/investor/prospectus" },
     ],
   },
   {
     label: "Stock Exchange",
     children: [
-      { label: "Corporate Announcement", href: `${LIW}/compliances/` },
-      { label: "Authorized Person", href: `${LIW}/authorized-person/` },
-      { label: "Grievance Redressal", href: `${LIW}/grievance-redressal/` },
+      { label: "Corporate Announcement", href: "/investor/corporate-announcement" },
+      { label: "Authorized Person", href: "/investor/authorized-person" },
+      { label: "Grievance Redressal", href: "/investor/grievance-redressal" },
     ],
   },
   {
     label: "Group Companies",
-    href: `${LIW}/group-companies/`,
+    href: "/investor/group-companies",
   },
 ];
 

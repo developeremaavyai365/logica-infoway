@@ -158,3 +158,194 @@ export const SECRETARIAL_COMPLIANCE: AnnualReport[] = [
     url: "https://www.logicainfoway.com/wp-content/uploads/2023/03/Secretarial-Audit-report-2021-22.pdf",
   },
 ];
+
+/** Real notice, mirrored from logicainfoway.com/notice. */
+export const NOTICE_DOC: AnnualReport = {
+  title: "Notice",
+  year: "",
+  url: "https://www.logicainfoway.com/wp-content/uploads/2023/03/NOTICE.pdf",
+};
+
+/** Real board meeting periods under Shareholder Information, mirrored from
+ *  logicainfoway.com/board-meeting (distinct from the Performance category's
+ *  notice-of-board-meeting page — the source site lists both separately). */
+export const SHAREHOLDER_BOARD_MEETING_PERIODS: FiscalYearFolder[] = [
+  { label: "01-04-2026 to 31-03-2027", url: "https://www.logicainfoway.com/01-04-2026-to-31-03-2027-3/" },
+  { label: "01-04-2025 to 31-03-2026", url: "https://www.logicainfoway.com/01-04-2025-to-31-03-2026-12/" },
+  { label: "01-04-2024 to 31-03-2025", url: "https://www.logicainfoway.com/01-04-2024-to-31-03-2025-7/" },
+  { label: "01-04-2023 to 31-03-2024", url: "https://www.logicainfoway.com/01-04-2023-to-31-03-2024-2/" },
+  { label: "Prior to Listing", url: "https://www.logicainfoway.com/prior-to-listening/" },
+];
+
+/** Real general meeting periods under Shareholder Information, mirrored from
+ *  logicainfoway.com/notice-of-general-meeting. */
+export const SHAREHOLDER_GENERAL_MEETING_PERIODS: FiscalYearFolder[] = [
+  { label: "01-04-2026 to 31-03-2027", url: "https://www.logicainfoway.com/01-04-2026-to-31-03-2027-3-2/" },
+  { label: "01-04-2025 to 31-03-2026", url: "https://www.logicainfoway.com/01-04-2025-to-31-03-2026-2/" },
+  { label: "01-04-2024 to 31-03-2025", url: "https://www.logicainfoway.com/01-04-2024-to-31-03-2025-6/" },
+  { label: "01-04-2023 to 31-03-2024", url: "https://www.logicainfoway.com/01-04-2023-to-31-03-2024/" },
+  { label: "Prior to Listing", url: "https://www.logicainfoway.com/committee-meeting-01-04-2023-to-31-03-2024/" },
+];
+
+/** Real committee meeting periods, mirrored from logicainfoway.com/committee-meeting. */
+export const COMMITTEE_MEETING_PERIODS: FiscalYearFolder[] = [
+  { label: "01-04-2026 to 31-03-2027", url: "https://www.logicainfoway.com/01-04-2026-to-31-03-2027-3-3/" },
+  { label: "01-04-2025 to 31-03-2026", url: "https://www.logicainfoway.com/01-04-2025-to-31-03-2026/" },
+  { label: "01-04-2024 to 31-03-2025", url: "https://www.logicainfoway.com/01-04-2024-to-31-03-2025-4/" },
+  { label: "01-04-2023 to 31-03-2024", url: "https://www.logicainfoway.com/committee-meeting-01-04-2023-to-31-03-2024/" },
+];
+
+/** Real corporate policy documents, mirrored from logicainfoway.com/policies. */
+export const POLICIES: AnnualReport[] = [
+  {
+    title: "Related Party Policy",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2026/05/Revised-Related-Party-Policy-signed.pdf",
+  },
+  {
+    title: "CSR Policy",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2024/08/CSR-POLICY.pdf",
+  },
+  {
+    title: "Forex Exchange Risk Management Policy",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2023/08/APPROVED-FOREX-EXCHANGE-RISK-MANAGEMENT-POLICY.pdf",
+  },
+  {
+    title: "Code of Conduct for Directors and Senior Management",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Code-of-Conduct-for-Directors-and-Senior-Management-1.pdf",
+  },
+  {
+    title: "Familiarization Program for Independent Directors",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Familiarization-Program-for-Independent-Directors-1.pdf",
+  },
+  {
+    title: "Internal Procedures and Conduct for Prevention of Insider Trading",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2026/04/Annexure-E-Revised-Policy-on-Internal-Procedures-Conduct-for-Prevention-of-Insider-Trading-signed.pdf",
+  },
+  {
+    title: "Materiality Policy for Identification of Group Companies",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Materiality-Policy-for-Identification-of-Group-Companies-1.pdf",
+  },
+  {
+    title: "Nomination and Remuneration Policy",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Nomination-and-Remuneration-Policy-1.pdf",
+  },
+  {
+    title: "Policy for Archival of Documents",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Policy-for-Archival-of-Documents-1.pdf",
+  },
+  {
+    title: "Policy on Disclosure of Material Events/Information",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2023/07/policy-on-disclosure-of-material-event.pdf",
+  },
+  {
+    title: "Policy on Diversity on Board",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Policy-on-Diversity-on-Board-1.pdf",
+  },
+  {
+    title: "Policy on Identification of Material Creditors and Material Litigations",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Policy-on-Identification-of-Material-Creditors-and-Material-Litigation.pdf",
+  },
+  {
+    title: "Policy on Prevention of Sexual Harassment at Workplace",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Policy-on-Prevention-of-Sexual-Harrasment-at-Workplace-1.pdf",
+  },
+  {
+    title: "Policy on Terms of Appointment of Independent Directors",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Policy-on-Terms-of-Appointment-of-Independent-Directors-1.pdf",
+  },
+  {
+    title: "Vigil Mechanism Whistle Blower Policy for Directors and Employees",
+    year: "",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2022/09/Vigil-Mechanism_Whistle-Blower-Policy-for-Directors-and-Employees-1.pdf",
+  },
+];
+
+/** Real material creditors filing, mirrored from logicainfoway.com/material-creditors. */
+export const MATERIAL_CREDITORS_DOC: AnnualReport = {
+  title: "Material Creditors",
+  year: "",
+  url: "https://www.logicainfoway.com/wp-content/uploads/2022/10/Material-Creditors.pdf",
+};
+
+/** Real shareholding pattern filings, mirrored from logicainfoway.com/shareholding-pattern. */
+export const SHAREHOLDING_PATTERN: AnnualReport[] = [
+  {
+    title: "Shareholding Pattern for FY ended 31-03-2026",
+    year: "2025-26",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2026/07/Shareholding-Pattern-for-FY-ended-31-03-2026-1.pdf",
+  },
+  {
+    title: "Shareholding Pattern for HY ended 30-09-2025",
+    year: "2025-26",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2025/10/Shareholding-Pattern-30.09.2025-signed-2.pdf",
+  },
+  {
+    title: "Shareholding Pattern for Year Ended 31-03-2025",
+    year: "2024-25",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2025/04/Shareholding-Pattern-31.03.2025-signed.pdf",
+  },
+  {
+    title: "Shareholding Pattern for HY Ended 30-09-2024",
+    year: "2024-25",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2024/10/Shareholding-pattern-for-HY-ended-30-September-2024-2.pdf",
+  },
+  {
+    title: "Shareholding Pattern as on 31-03-2024",
+    year: "2023-24",
+    url: "https://www.logicainfoway.com/wp-content/uploads/2024/10/Shareholding-Pattern-as-on-31-03-2024.pdf",
+  },
+];
+
+/** Real familiarization program filing, mirrored from
+ *  logicainfoway.com/familiarization-program. */
+export const FAMILIARIZATION_PROGRAM_DOC: AnnualReport = {
+  title: "Familiarization Program (under Regulation 46)",
+  year: "",
+  url: "https://www.logicainfoway.com/wp-content/uploads/2026/03/Familarisation-Programme-under-Regulation-46.pdf",
+};
+
+/** Real fund raising periods, mirrored from logicainfoway.com/fund-raising. */
+export const FUND_RAISING_PERIODS: FiscalYearFolder[] = [
+  { label: "01-04-2024 to 31-03-2025", url: "https://www.logicainfoway.com/01-04-2024-to-31-03-2025-8/" },
+  { label: "01-04-2023 to 31-03-2024", url: "https://www.logicainfoway.com/01-04-2023-to-31-03-2024-6/" },
+  { label: "01-04-2022 to 31-03-2023", url: "https://www.logicainfoway.com/01-04-2023-to-31-03-2024-8" },
+];
+
+/** Real prospectus filing, mirrored from logicainfoway.com/prospectus. */
+export const PROSPECTUS_DOC: AnnualReport = {
+  title: "Prospectus",
+  year: "",
+  url: "https://www.logicainfoway.com/wp-content/uploads/2022/12/ELIL-Prospectus-RA20221228-Final_compressed.pdf",
+};
+
+/** Real corporate announcement periods, mirrored from logicainfoway.com/compliances. */
+export const CORPORATE_ANNOUNCEMENT_PERIODS: FiscalYearFolder[] = [
+  { label: "01-04-2026 to 31-03-2027", url: "https://www.logicainfoway.com/01-04-2026-to-31-03-2027/" },
+  { label: "01-04-2025 to 31-03-2026", url: "https://www.logicainfoway.com/01-04-2025-to-31-03-2026-9/" },
+  { label: "01-04-2024 to 31-03-2025", url: "https://www.logicainfoway.com/01-04-2024-to-31-03-2025/" },
+  { label: "01-04-2023 to 31-03-2024", url: "https://www.logicainfoway.com/compliances-01-04-2023-to-31-03-2024/" },
+];
+
+/** Real group (subsidiary) companies, mirrored from logicainfoway.com/group-companies —
+ *  named entities only; the source page doesn't expose individual report URLs. */
+export const GROUP_COMPANIES = [
+  "Himadri Dealcom Private Ltd.",
+  "Sonartari Tradelink Private Ltd.",
+  "Logica Systems & Peripherals Private Ltd.",
+  "Kalpaturu Tradevin Private Ltd.",
+  "Nirwan Logica Private Ltd.",
+];
