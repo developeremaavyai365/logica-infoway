@@ -5,20 +5,23 @@ import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_STORY } from "@/lib/kanva";
 import { BlurTextHeading, GradientShimmer } from "@/components/kanva/KanvaTextEffects";
 import { LogoWall } from "@/components/ui/LogoBadge";
-import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
 /** Deeper legacy narrative, lower on the page — real facts only, no invented milestones. */
 export function KanvaStorySection() {
   return (
-    <section className="relative overflow-hidden border-t border-neutral-200 bg-gradient-to-br from-amber-200 via-amber-100 to-orange-100 px-6 py-24 lg:px-10 lg:py-32">
-      <ParallaxLayer speed={0.55} scaleDepth>
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 60% 45% at 15% 100%, ${KANVA_ACCENTS.gold}0d, transparent 60%)`,
-          }}
-        />
-      </ParallaxLayer>
+    <section className="relative overflow-hidden border-t border-neutral-200 bg-neutral-950 px-6 py-24 lg:px-10 lg:py-32">
+      <video
+        src="/videos/story-bg.mp4"
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="metadata"
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* Dark wash keeps the video visible while giving the text enough contrast */}
+      <div className="absolute inset-0 bg-neutral-950/70" />
 
       <div className="relative z-10 mx-auto max-w-[90rem]">
         <motion.div
@@ -32,7 +35,7 @@ export function KanvaStorySection() {
             {/* Decorative founding-year numeral — real fact (1995), purely visual weight. */}
             <span
               aria-hidden
-              className="pointer-events-none absolute -left-2 -top-10 select-none font-display text-[7rem] font-bold leading-none text-neutral-900/[0.04] lg:-top-14 lg:text-[10rem]"
+              className="pointer-events-none absolute -left-2 -top-10 select-none font-display text-[7rem] font-bold leading-none text-white/[0.06] lg:-top-14 lg:text-[10rem]"
             >
               1995
             </span>
