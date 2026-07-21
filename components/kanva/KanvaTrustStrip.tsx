@@ -9,7 +9,7 @@ import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 /** Slim, glanceable stat strip directly under the hero — no long copy. */
 export function KanvaTrustStrip() {
   return (
-    <section className="relative overflow-hidden border-y border-neutral-200 bg-neutral-50">
+    <section className="relative overflow-hidden border-y border-neutral-200 bg-cyan-50/60">
       <ParallaxLayer speed={0.4}>
         <div
           className="absolute inset-0"

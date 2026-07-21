@@ -55,7 +55,7 @@ function TypeRevealHeading({ text, color }: { text: string; color: string }) {
  *  non-animated block. */
 export function KanvaPhilosophySection() {
   return (
-    <section className="relative overflow-hidden bg-white px-6 py-20 lg:px-10 lg:py-28">
+    <section className="relative overflow-hidden bg-emerald-50/50 px-6 py-20 lg:px-10 lg:py-28">
       <ParallaxLayer speed={0.5} scaleDepth>
         <div
           className="absolute inset-0"

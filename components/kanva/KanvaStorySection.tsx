@@ -10,7 +10,7 @@ import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 /** Deeper legacy narrative, lower on the page — real facts only, no invented milestones. */
 export function KanvaStorySection() {
   return (
-    <section className="relative overflow-hidden border-t border-neutral-200 bg-white px-6 py-24 lg:px-10 lg:py-32">
+    <section className="relative overflow-hidden border-t border-neutral-200 bg-amber-50/50 px-6 py-24 lg:px-10 lg:py-32">
       <ParallaxLayer speed={0.55} scaleDepth>
         <div
           className="absolute inset-0"
