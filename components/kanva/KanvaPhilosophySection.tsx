@@ -55,15 +55,19 @@ function TypeRevealHeading({ text, color }: { text: string; color: string }) {
  *  non-animated block. */
 export function KanvaPhilosophySection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-200 via-emerald-100 to-teal-100 px-6 py-20 lg:px-10 lg:py-28">
-      <ParallaxLayer speed={0.5} scaleDepth>
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 70% 50% at 50% 0%, ${KANVA_ACCENTS.mint}0d, transparent 60%)`,
-          }}
-        />
-      </ParallaxLayer>
+    <section className="relative overflow-hidden bg-neutral-950 px-6 py-20 lg:px-10 lg:py-28">
+      <video
+        src="/videos/philosophy-bg.mp4"
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="metadata"
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* Dark wash keeps the video visible while giving the text enough contrast */}
+      <div className="absolute inset-0 bg-neutral-950/70" />
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.04em]">
@@ -72,7 +76,7 @@ export function KanvaPhilosophySection() {
 
         <div className="mt-10 space-y-6 text-left">
           {KANVA_PHILOSOPHY.map((pillar) => (
-            <p key={pillar.id} className="text-base leading-relaxed text-neutral-600 lg:text-lg">
+            <p key={pillar.id} className="text-base leading-relaxed text-white/80 lg:text-lg">
               <span className="font-display font-semibold" style={{ color: pillar.accent }}>
                 {pillar.title}.
               </span>{" "}
