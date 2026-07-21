@@ -62,10 +62,6 @@ export function KanvaPhilosophySection() {
           style={{ backgroundImage: "url(/images/philosophy-bg.jpg)" }}
         />
       </ParallaxLayer>
-      {/* Light white wash keeps the texture clearly visible while still
-         giving the dark heading/body copy on top enough contrast. */}
-      <div className="absolute inset-0 bg-white/55" />
-
       <ParallaxLayer speed={0.5} scaleDepth>
         <div
           className="absolute inset-0"
