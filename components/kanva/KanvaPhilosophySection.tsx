@@ -56,6 +56,16 @@ function TypeRevealHeading({ text, color }: { text: string; color: string }) {
 export function KanvaPhilosophySection() {
   return (
     <section className="relative overflow-hidden bg-white px-6 py-20 lg:px-10 lg:py-28">
+      <ParallaxLayer speed={0.35} scaleDepth>
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url(/images/philosophy-bg.jpg)" }}
+        />
+      </ParallaxLayer>
+      {/* White wash keeps the texture visible but subtle, so the dark
+         heading/body copy on top stays fully readable. */}
+      <div className="absolute inset-0 bg-white/90" />
+
       <ParallaxLayer speed={0.5} scaleDepth>
         <div
           className="absolute inset-0"
