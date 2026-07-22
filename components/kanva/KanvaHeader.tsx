@@ -279,31 +279,39 @@ export function KanvaHeader() {
             <Link
               href="/shop"
               aria-label="Search"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full text-white/90 transition-colors hover:bg-white/10"
+              style={{ "--i": "#56CCF2", "--j": "#2F80ED" } as React.CSSProperties}
+              className="dock-btn inline-flex h-10 w-10 items-center justify-center rounded-full text-white/90"
             >
-              <FiSearch className="h-[18px] w-[18px]" />
+              <FiSearch className="dock-icon h-[18px] w-[18px]" />
+              <span className="dock-title">Search</span>
             </Link>
             <Link
               href="/account"
               aria-label="Account"
-              className="hidden h-10 w-10 items-center justify-center rounded-full text-white/90 transition-colors hover:bg-white/10 sm:inline-flex"
+              style={{ "--i": "#a955ff", "--j": "#ea51ff" } as React.CSSProperties}
+              className="dock-btn hidden h-10 w-10 items-center justify-center rounded-full text-white/90 sm:inline-flex"
             >
-              <FiUser className="h-[18px] w-[18px]" />
+              <FiUser className="dock-icon h-[18px] w-[18px]" />
+              <span className="dock-title">Account</span>
             </Link>
             <Link
               href="/wishlist"
               aria-label="Wishlist"
-              className="relative hidden h-10 w-10 items-center justify-center rounded-full text-white/90 transition-colors hover:bg-white/10 sm:inline-flex"
+              style={{ "--i": "#ffa9c6", "--j": "#f434e2" } as React.CSSProperties}
+              className="dock-btn relative hidden h-10 w-10 items-center justify-center rounded-full text-white/90 sm:inline-flex"
             >
-              <FiHeart className="h-[18px] w-[18px]" />
+              <FiHeart className="dock-icon h-[18px] w-[18px]" />
+              <span className="dock-title">Wishlist</span>
               <CountBadge count={wishlistBadge} />
             </Link>
             <Link
               href="/cart"
               aria-label="Cart"
-              className="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-colors hover:bg-white/20"
+              style={{ "--i": "#FF9966", "--j": "#FF5E62" } as React.CSSProperties}
+              className="dock-btn relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white"
             >
-              <FiShoppingBag className="h-[18px] w-[18px]" />
+              <FiShoppingBag className="dock-icon h-[18px] w-[18px]" />
+              <span className="dock-title">Cart</span>
               <CountBadge count={cartBadge} />
             </Link>
           </div>

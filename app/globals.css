@@ -155,3 +155,67 @@
 .price-range::-moz-range-track {
   background: transparent;
 }
+
+/* Navbar action icons (search/account/wishlist/cart) — gradient hover dock
+   effect. Each button sets --i/--j (gradient stops) via inline style. */
+.dock-btn {
+  position: relative;
+  isolation: isolate;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.dock-btn:hover {
+  transform: translateY(-4px);
+}
+.dock-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  opacity: 0;
+  background: linear-gradient(45deg, var(--i), var(--j));
+  transition: opacity 0.4s ease;
+}
+.dock-btn:hover::before {
+  opacity: 1;
+}
+.dock-btn .dock-icon {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+.dock-btn:hover .dock-icon {
+  color: #fff;
+  transform: scale(1.15);
+}
+.dock-btn .dock-title {
+  position: absolute;
+  left: 50%;
+  top: -6px;
+  translate: -50% 0;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: #0a0a0a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+.dock-btn .dock-title::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  translate: -50% 0;
+  width: 6px;
+  height: 6px;
+  background: #0a0a0a;
+  rotate: 45deg;
+}
+.dock-btn:hover .dock-title {
+  top: -34px;
+  opacity: 1;
+  visibility: visible;
+}
