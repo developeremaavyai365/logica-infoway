@@ -13,7 +13,7 @@ import { KanvaOrderTypesSection } from "@/components/kanva/KanvaOrderTypesSectio
  *  kept here as the main hero (and only here, not duplicated on /shop). */
 export function KanvaHome() {
   return (
-    <div className="relative isolate overflow-x-hidden bg-white text-neutral-900">
+    <div className="relative isolate bg-white text-neutral-900">
       <KanvaHeader />
       <KanvaHero />
       <KanvaTrustStrip />
