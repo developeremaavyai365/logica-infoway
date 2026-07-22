@@ -43,7 +43,7 @@ export function KanvaStorySection() {
             <BlurTextHeading
               text={KANVA_STORY.title}
               className="relative mt-4 font-display text-[clamp(1.9rem,3.6vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em]"
-              color={KANVA_ACCENTS.gold}
+              color={KANVA_ACCENTS.cyan}
             />
           </motion.div>
 
