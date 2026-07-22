@@ -6,6 +6,7 @@ import { KanvaPhilosophySection } from "@/components/kanva/KanvaPhilosophySectio
 import { KanvaMissionSection } from "@/components/kanva/KanvaMissionSection";
 import { KanvaStorySection } from "@/components/kanva/KanvaStorySection";
 import { KanvaClosingCta } from "@/components/kanva/KanvaClosingCta";
+import { KanvaOrderTypesSection } from "@/components/kanva/KanvaOrderTypesSection";
 
 /** Homepage — otherwise purely informational/company content; all product
  *  showcase/browsing sections live on /shop. KanvaHero is the one exception,
@@ -21,6 +22,7 @@ export function KanvaHome() {
       <KanvaStorySection />
       <KanvaMotionRevealSegment />
       <KanvaClosingCta />
+      <KanvaOrderTypesSection />
     </div>
   );
 }
