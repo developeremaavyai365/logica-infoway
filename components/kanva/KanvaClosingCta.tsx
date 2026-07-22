@@ -6,20 +6,23 @@ import { LuArrowRight, LuPhone } from "react-icons/lu";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_CLOSING_CTA } from "@/lib/kanva";
 import { BlurTextHeading, GradientShimmer } from "@/components/kanva/KanvaTextEffects";
-import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
 /** Final conversion moment before the footer — real /shop path + published order line. */
 export function KanvaClosingCta() {
   return (
-    <section className="relative overflow-hidden border-t border-neutral-200 bg-gradient-to-br from-violet-200 via-violet-100 to-fuchsia-100 px-6 py-24 text-center lg:py-32">
-      <ParallaxLayer speed={0.55} scaleDepth>
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `radial-gradient(ellipse 60% 60% at 50% 100%, ${KANVA_ACCENTS.violet}0d, transparent 65%)`,
-          }}
-        />
-      </ParallaxLayer>
+    <section className="relative overflow-hidden border-t border-neutral-200 bg-neutral-950 px-6 py-24 text-center lg:py-32">
+      <video
+        src="/videos/closing-cta-bg.mp4"
+        muted
+        loop
+        playsInline
+        autoPlay
+        preload="metadata"
+        aria-hidden
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      {/* Dark wash keeps the video visible while giving the text enough contrast */}
+      <div className="absolute inset-0 bg-neutral-950/70" />
 
       <motion.div
         variants={staggerContainer}
@@ -36,21 +39,21 @@ export function KanvaClosingCta() {
           className="mt-4 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.03em]"
           color={KANVA_ACCENTS.violet}
         />
-        <motion.p variants={fadeUp} className="mt-4 text-base text-neutral-500 lg:text-lg">
+        <motion.p variants={fadeUp} className="mt-4 text-base text-white/70 lg:text-lg">
           {KANVA_CLOSING_CTA.subtitle}
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             href={KANVA_CLOSING_CTA.primaryCta.href}
-            className="inline-flex items-center gap-2.5 rounded-full bg-neutral-900 px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+            className="inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-900 transition-transform hover:scale-[1.03]"
           >
             {KANVA_CLOSING_CTA.primaryCta.label}
             <LuArrowRight className="h-4 w-4" />
           </Link>
           <a
             href={KANVA_CLOSING_CTA.phoneHref}
-            className="inline-flex items-center gap-2.5 rounded-full border border-neutral-300 px-7 py-3.5 text-sm font-semibold text-neutral-900 transition-colors hover:border-neutral-400"
+            className="inline-flex items-center gap-2.5 rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
           >
             <LuPhone className="h-4 w-4" />
             {KANVA_CLOSING_CTA.phoneLabel}
