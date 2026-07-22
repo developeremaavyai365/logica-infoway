@@ -11,6 +11,16 @@ import { NAV_ITEMS, SHOP_MEGA, type NavItem } from "@/lib/nav";
 import { useShopStore } from "@/components/shop/store";
 import { cn } from "@/lib/utils";
 
+/** Gradient pairs cycled across the main nav links (nav-pill hover effect). */
+const NAV_GRADIENTS: [string, string][] = [
+  ["#a955ff", "#ea51ff"],
+  ["#56CCF2", "#2F80ED"],
+  ["#FF9966", "#FF5E62"],
+  ["#80FF72", "#7EE8FA"],
+  ["#ffa9c6", "#f434e2"],
+  ["#f7971e", "#ffd200"],
+];
+
 /** Small numeric badge for the cart/wishlist icons — hidden at 0. */
 function CountBadge({ count }: { count: number }) {
   if (count <= 0) return null;
@@ -40,10 +50,12 @@ function NavDropdown({
   item,
   pathname,
   variant = "dark",
+  gradient,
 }: {
   item: NavItem;
   pathname: string;
   variant?: "dark" | "light";
+  gradient?: [string, string];
 }) {
   const [open, setOpen] = useState(false);
   const active = isActive(pathname, item.href);
@@ -76,7 +88,8 @@ function NavDropdown({
     >
       <Link
         href={item.href}
-        className={cn("flex items-center gap-1 text-sm font-medium transition-opacity", triggerClass)}
+        style={gradient ? ({ "--i": gradient[0], "--j": gradient[1] } as React.CSSProperties) : undefined}
+        className={cn("nav-pill flex items-center gap-1 text-sm font-medium", triggerClass)}
       >
         {item.label}
         <LuChevronDown className={cn("h-3.5 w-3.5 transition-transform", open && "rotate-180")} />
@@ -249,15 +262,27 @@ export function KanvaHeader() {
 
           {/* Corporate nav — product categories live under Shop only */}
           <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-6 md:flex lg:gap-8">
-            {NAV_ITEMS.map((item) =>
+            {NAV_ITEMS.map((item, i) =>
               item.children || item.mega ? (
-                <NavDropdown key={item.href} item={item} pathname={pathname} variant="dark" />
+                <NavDropdown
+                  key={item.href}
+                  item={item}
+                  pathname={pathname}
+                  variant="dark"
+                  gradient={NAV_GRADIENTS[i % NAV_GRADIENTS.length]}
+                />
               ) : (
                 <Link
                   key={item.href}
                   href={item.href}
+                  style={
+                    {
+                      "--i": NAV_GRADIENTS[i % NAV_GRADIENTS.length][0],
+                      "--j": NAV_GRADIENTS[i % NAV_GRADIENTS.length][1],
+                    } as React.CSSProperties
+                  }
                   className={cn(
-                    "text-sm font-medium transition-opacity hover:opacity-60",
+                    "nav-pill text-sm font-medium",
                     isActive(pathname, item.href) ? "text-white" : "text-white/90",
                   )}
                 >

@@ -219,3 +219,47 @@
   opacity: 1;
   visibility: visible;
 }
+
+/* Main navbar links (Home/Shop/About/Investor/Media/Careers) — gradient
+   pill hover, adapted from the same dock effect: a soft glowing gradient
+   capsule scales in behind the label and the label turns white. */
+.nav-pill {
+  position: relative;
+  isolation: isolate;
+  padding: 0.4rem 0.9rem;
+  margin: -0.4rem -0.9rem;
+  border-radius: 9999px;
+  transition: color 0.4s ease;
+}
+.nav-pill:hover {
+  color: #fff !important;
+}
+.nav-pill::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 9999px;
+  background: linear-gradient(45deg, var(--i), var(--j));
+  opacity: 0;
+  transform: scale(0.6);
+  transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-pill:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+.nav-pill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: 9999px;
+  background: linear-gradient(45deg, var(--i), var(--j));
+  filter: blur(16px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.nav-pill:hover::after {
+  opacity: 0.55;
+}
