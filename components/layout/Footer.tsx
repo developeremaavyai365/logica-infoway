@@ -95,10 +95,10 @@ export function Footer({ className }: { className?: string }) {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={s.label}
-                      style={{ backgroundColor: meta.color }}
-                      className="inline-flex h-9 w-9 items-center justify-center rounded-full text-white transition-transform hover:-translate-y-0.5"
+                      style={{ "--fill": meta.color } as React.CSSProperties}
+                      className="social-flip inline-flex h-9 w-9 items-center justify-center rounded-full bg-white"
                     >
-                      {meta.icon}
+                      <span className="social-flip-icon">{meta.icon}</span>
                     </a>
                   );
                 })}
