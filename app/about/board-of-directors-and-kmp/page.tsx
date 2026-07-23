@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Link from "next/link";
 import { Container, Section } from "@/components/ui/Section";
 import { KANVA_ACCENTS } from "@/lib/kanva";
 import { BOARD_MEMBERS } from "@/lib/board";
@@ -19,30 +19,55 @@ export default function BoardOfDirectorsPage() {
             About
           </p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-0.03em] text-neutral-900 lg:text-5xl">
-            Board of Directors &amp; Key Managerial Personnel
+            Meet our team
           </h1>
+          <p className="mt-3 max-w-2xl text-sm text-neutral-500">
+            Our Board of Directors and Key Managerial Personnel. Hover a photo for their role — full
+            details are listed below each one too.
+          </p>
 
-          <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="team-grid mt-12">
             {BOARD_MEMBERS.map((member) => (
-              <div
-                key={member.name}
-                className="flex flex-col items-center rounded-2xl border border-neutral-200 bg-white p-6 text-center transition-shadow hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)]"
-              >
-                <div className="relative h-28 w-28 overflow-hidden rounded-full bg-neutral-100">
-                  <Image src={member.photo} alt={member.name} fill sizes="112px" className="object-cover" />
+              <li key={member.name} className="flex w-44 flex-col items-center text-center">
+                <div className="team-item" style={{ backgroundImage: `url(${member.photo})` }}>
+                  <div className="team-info">
+                    <h3>{member.name}</h3>
+                    <p>{member.designation}</p>
+                  </div>
                 </div>
-                <h2 className="mt-4 font-display text-lg font-semibold text-neutral-900">{member.name}</h2>
-                <p className="mt-1 text-sm font-semibold" style={{ color: KANVA_ACCENTS.sky }}>
+                <h2 className="mt-4 font-display text-sm font-semibold text-neutral-900">{member.name}</h2>
+                <p className="mt-0.5 text-xs font-semibold" style={{ color: KANVA_ACCENTS.sky }}>
                   {member.designation}
                 </p>
-                <ul className="mt-3 space-y-1 text-xs leading-relaxed text-neutral-500">
+                <ul className="mt-2 space-y-1 text-[11px] leading-relaxed text-neutral-500">
                   {member.details.map((detail) => (
                     <li key={detail}>{detail}</li>
                   ))}
                 </ul>
-              </div>
+              </li>
             ))}
-          </div>
+
+            <li className="flex w-44 flex-col items-center text-center">
+              <Link
+                href="/careers"
+                className="team-item team-cta"
+                style={
+                  {
+                    backgroundColor: "#e5e5e5",
+                    "--team-accent": KANVA_ACCENTS.mint,
+                  } as React.CSSProperties
+                }
+              >
+                <div className="team-info">
+                  <h3>Want to join us?</h3>
+                  <p>Current vacancies</p>
+                </div>
+              </Link>
+              <Link href="/careers" className="mt-4 font-display text-sm font-semibold text-neutral-900 hover:underline">
+                Want to join us?
+              </Link>
+            </li>
+          </ul>
         </Container>
       </Section>
     </main>
