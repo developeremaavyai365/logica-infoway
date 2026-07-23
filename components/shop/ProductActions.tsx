@@ -53,7 +53,8 @@ export function ProductActions({ productId }: { productId: string }) {
         <button
           type="button"
           onClick={handleAdd}
-          className="inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-6 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+          style={{ "--liquid": "#0F9D58", "--liquid-ink": "#fff" } as React.CSSProperties}
+          className="btn-liquid inline-flex h-11 items-center gap-2 rounded-full bg-neutral-900 px-6 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
         >
           {justAdded ? <LuCheck className="h-4 w-4" /> : <FiShoppingBag className="h-4 w-4" />}
           {justAdded ? "Added" : alreadyInCart ? "Add More" : "Add to Cart"}
@@ -62,7 +63,8 @@ export function ProductActions({ productId }: { productId: string }) {
         <Link
           href="/cart"
           onClick={() => addToCart(productId, qty)}
-          className="inline-flex h-11 items-center gap-2 rounded-full border border-neutral-300 px-6 text-sm font-semibold text-neutral-900 transition-colors hover:bg-neutral-100"
+          style={{ "--liquid": "#171717", "--liquid-ink": "#fff" } as React.CSSProperties}
+          className="btn-liquid inline-flex h-11 items-center gap-2 rounded-full border border-neutral-300 px-6 text-sm font-semibold text-neutral-900"
         >
           Buy Now
         </Link>

@@ -46,14 +46,16 @@ export function KanvaClosingCta() {
         <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <Link
             href={KANVA_CLOSING_CTA.primaryCta.href}
-            className="inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-900 transition-transform hover:scale-[1.03]"
+            style={{ "--liquid": KANVA_ACCENTS.violet, "--liquid-ink": "#fff" } as React.CSSProperties}
+            className="btn-liquid inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-900 transition-transform hover:scale-[1.03]"
           >
             {KANVA_CLOSING_CTA.primaryCta.label}
             <LuArrowRight className="h-4 w-4" />
           </Link>
           <a
             href={KANVA_CLOSING_CTA.phoneHref}
-            className="inline-flex items-center gap-2.5 rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:border-white/50"
+            style={{ "--liquid": KANVA_ACCENTS.violet, "--liquid-ink": "#fff" } as React.CSSProperties}
+            className="btn-liquid inline-flex items-center gap-2.5 rounded-full border border-white/30 px-7 py-3.5 text-sm font-semibold text-white hover:border-white/50"
           >
             <LuPhone className="h-4 w-4" />
             {KANVA_CLOSING_CTA.phoneLabel}

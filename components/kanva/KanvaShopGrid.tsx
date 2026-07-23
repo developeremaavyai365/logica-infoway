@@ -129,8 +129,15 @@ function ShopGridTile({ tile }: { tile: KanvaShopGridTile }) {
       <div className="relative z-10 flex shrink-0 justify-center px-3 pb-5 pt-2 lg:pb-6">
         <Link
           href={tile.href}
-          className="group/cta relative inline-flex items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-semibold text-neutral-950 transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_10px_32px_var(--cta-glow)] active:scale-[0.98]"
-          style={{ backgroundColor: tile.accent, ["--cta-glow" as string]: `${tile.accent}80` }}
+          className="btn-liquid group/cta relative inline-flex items-center gap-2 overflow-hidden rounded-full px-6 py-3 text-sm font-semibold text-neutral-950 transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_10px_32px_var(--cta-glow)] active:scale-[0.98]"
+          style={
+            {
+              backgroundColor: tile.accent,
+              ["--cta-glow" as string]: `${tile.accent}80`,
+              "--liquid": "#0a0a0a",
+              "--liquid-ink": "#fff",
+            } as React.CSSProperties
+          }
         >
           <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 ease-out group-hover/cta:translate-x-full" />
           <span className="relative">Shop now</span>
@@ -185,8 +192,15 @@ function ShopGridTileLabeled({
       <div className="absolute inset-x-0 bottom-0 z-10 flex justify-center px-3 pb-5 lg:pb-6">
         <Link
           href={tile.href}
-          className="group/cta relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3 text-sm font-semibold text-neutral-950 transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_10px_32px_var(--cta-glow)] active:scale-[0.98]"
-          style={{ backgroundColor: tile.accent, ["--cta-glow" as string]: `${tile.accent}80` }}
+          className="btn-liquid group/cta relative inline-flex items-center gap-2 overflow-hidden rounded-full px-7 py-3 text-sm font-semibold text-neutral-950 transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_10px_32px_var(--cta-glow)] active:scale-[0.98]"
+          style={
+            {
+              backgroundColor: tile.accent,
+              ["--cta-glow" as string]: `${tile.accent}80`,
+              "--liquid": "#0a0a0a",
+              "--liquid-ink": "#fff",
+            } as React.CSSProperties
+          }
         >
           <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 ease-out group-hover/cta:translate-x-full" />
           <span className="relative">Shop now</span>

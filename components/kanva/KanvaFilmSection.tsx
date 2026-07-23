@@ -156,8 +156,15 @@ export function KanvaFilmSection({ segment }: { segment: KanvaFilmSegment }) {
 
           <Link
             href={cta.href}
-            className="group/cta relative mt-8 inline-flex items-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold text-neutral-950 transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_12px_40px_var(--cta-glow)] active:scale-[0.98]"
-            style={{ backgroundColor: accent, ["--cta-glow" as string]: `${accent}80` }}
+            className="btn-liquid group/cta relative mt-8 inline-flex items-center gap-2.5 overflow-hidden rounded-full px-7 py-3.5 text-sm font-semibold text-neutral-950 transition-all duration-300 hover:scale-[1.06] hover:shadow-[0_12px_40px_var(--cta-glow)] active:scale-[0.98]"
+            style={
+              {
+                backgroundColor: accent,
+                ["--cta-glow" as string]: `${accent}80`,
+                "--liquid": "#0a0a0a",
+                "--liquid-ink": "#fff",
+              } as React.CSSProperties
+            }
           >
             <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/50 to-transparent transition-transform duration-700 ease-out group-hover/cta:translate-x-full" />
             <span className="relative">{cta.label}</span>

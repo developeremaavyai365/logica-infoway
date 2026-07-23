@@ -28,7 +28,8 @@ export default function ComparePage() {
         </p>
         <Link
           href="/shop"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+          style={{ "--liquid": "#0F9D58", "--liquid-ink": "#fff" } as React.CSSProperties}
+          className="btn-liquid mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
         >
           Continue shopping <LuArrowRight className="h-4 w-4" />
         </Link>
@@ -89,7 +90,8 @@ export default function ComparePage() {
                       <button
                         type="button"
                         onClick={() => addToCart(p.id, 1)}
-                        className="mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-xs font-semibold text-white transition-transform hover:scale-[1.02]"
+                        style={{ "--liquid": "#0F9D58", "--liquid-ink": "#fff" } as React.CSSProperties}
+                        className="btn-liquid mt-3 inline-flex w-full items-center justify-center gap-2 rounded-full bg-neutral-900 px-4 py-2 text-xs font-semibold text-white transition-transform hover:scale-[1.02]"
                       >
                         <FiShoppingBag className="h-3.5 w-3.5" />
                         Add to Cart

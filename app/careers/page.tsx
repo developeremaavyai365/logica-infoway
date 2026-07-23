@@ -73,8 +73,14 @@ export default function CareersPage() {
           </p>
           <a
             href={`mailto:${COMPANY.email}?subject=${encodeURIComponent("Career interest — Logica Infoway")}`}
-            className="mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-neutral-950 transition-transform hover:scale-[1.03]"
-            style={{ backgroundColor: KANVA_ACCENTS.mint }}
+            className="btn-liquid mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-neutral-950 transition-transform hover:scale-[1.03]"
+            style={
+              {
+                backgroundColor: KANVA_ACCENTS.mint,
+                "--liquid": KANVA_ACCENTS.violet,
+                "--liquid-ink": "#fff",
+              } as React.CSSProperties
+            }
           >
             Email your resume to {COMPANY.email}
           </a>

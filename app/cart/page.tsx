@@ -29,7 +29,8 @@ export default function CartPage() {
         </p>
         <Link
           href="/shop"
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
+          style={{ "--liquid": "#0F9D58", "--liquid-ink": "#fff" } as React.CSSProperties}
+          className="btn-liquid mt-6 inline-flex items-center gap-2 rounded-full bg-neutral-900 px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-[1.03]"
         >
           Continue shopping <LuArrowRight className="h-4 w-4" />
         </Link>

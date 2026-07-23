@@ -247,7 +247,8 @@ export function CategoryBrowser({
             <button
               type="button"
               onClick={() => setDrawerOpen(true)}
-              className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2.5 text-sm font-medium text-neutral-700 transition-colors hover:text-neutral-900 lg:hidden"
+              style={{ "--liquid": accent, "--liquid-ink": "#0a0a0a" } as React.CSSProperties}
+              className="btn-liquid inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2.5 text-sm font-medium text-neutral-700 lg:hidden"
             >
               <LuSlidersHorizontal className="h-4 w-4" />
               Filters
@@ -374,8 +375,8 @@ export function CategoryBrowser({
               <button
                 type="button"
                 onClick={() => setDrawerOpen(false)}
-                className="w-full rounded-full py-3 text-sm font-bold text-neutral-950"
-                style={{ backgroundColor: accent }}
+                className="btn-liquid w-full rounded-full py-3 text-sm font-bold text-neutral-950"
+                style={{ backgroundColor: accent, "--liquid": "#0a0a0a", "--liquid-ink": "#fff" } as React.CSSProperties}
               >
                 Show {filtered.length} results
               </button>

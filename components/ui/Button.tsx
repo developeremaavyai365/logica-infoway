@@ -13,12 +13,20 @@ const base =
   "transition-colors duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring " +
   "focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-50";
 
+// Liquid-fill hover sweep (see .btn-liquid in globals.css) — each variant
+// sweeps toward its complementary brand color rather than its own, so the
+// fill reads as a distinct hover state instead of a no-op self-tint.
 const variants: Record<Variant, string> = {
-  primary: "bg-primary text-primary-foreground shadow-soft hover:bg-primary/90",
-  secondary: "bg-muted text-foreground hover:bg-muted/70",
-  outline: "border border-border bg-transparent text-foreground hover:bg-muted",
-  ghost: "bg-transparent text-foreground hover:bg-muted",
-  highlight: "bg-highlight text-highlight-foreground shadow-soft hover:bg-highlight/90",
+  primary:
+    "btn-liquid [--liquid:hsl(var(--highlight))] [--liquid-ink:hsl(var(--highlight-foreground))] bg-primary text-primary-foreground shadow-soft",
+  secondary:
+    "btn-liquid [--liquid:hsl(var(--foreground))] [--liquid-ink:hsl(var(--background))] bg-muted text-foreground",
+  outline:
+    "btn-liquid [--liquid:hsl(var(--primary))] [--liquid-ink:hsl(var(--primary-foreground))] border border-border bg-transparent text-foreground",
+  ghost:
+    "btn-liquid [--liquid:hsl(var(--primary))] [--liquid-ink:hsl(var(--primary-foreground))] bg-transparent text-foreground",
+  highlight:
+    "btn-liquid [--liquid:hsl(var(--primary))] [--liquid-ink:hsl(var(--primary-foreground))] bg-highlight text-highlight-foreground shadow-soft",
 };
 
 const sizes: Record<Size, string> = {

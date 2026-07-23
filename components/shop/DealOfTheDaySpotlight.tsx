@@ -73,7 +73,10 @@ export function DealOfTheDaySpotlight({ product }: { product: Product }) {
             )}
           </div>
 
-          <span className="mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition-transform group-hover:scale-[1.03]">
+          <span
+            style={{ "--liquid": "#0F9D58", "--liquid-ink": "#fff" } as React.CSSProperties}
+            className="btn-liquid mt-7 inline-flex w-fit items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-neutral-950 transition-transform group-hover:scale-[1.03]"
+          >
             Shop this deal
             <LuArrowRight className="h-4 w-4" />
           </span>
