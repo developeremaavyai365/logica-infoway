@@ -256,6 +256,30 @@
   }
 }
 
+/* Split-join heading — two halves of a title slide in from opposite edges
+   and meet in the middle. Toggled by a .split-join-in class from JS
+   (IntersectionObserver), not :hover — this is a scroll-reveal, not a
+   pointer effect. */
+.split-join-text {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  overflow: hidden;
+}
+.split-join-part {
+  display: inline-block;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.split-join-left {
+  transform: translateX(-120%);
+}
+.split-join-right {
+  transform: translateX(120%);
+}
+.split-join-part.split-join-in {
+  transform: translateX(0);
+}
+
 /* Footer social icons — brand-colour panel slides up to fill the circle on
    hover while the icon flips (rotateY) and turns white. Each link sets
    --fill (its own brand colour) via inline style. */

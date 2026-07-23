@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_STORY } from "@/lib/kanva";
-import { BlurTextHeading, GradientShimmer } from "@/components/kanva/KanvaTextEffects";
+import { GradientShimmer, SplitJoinHeading } from "@/components/kanva/KanvaTextEffects";
 import { LogoWall } from "@/components/ui/LogoBadge";
 import { ParallaxLayer } from "@/components/kanva/ParallaxLayer";
 
@@ -40,8 +40,9 @@ export function KanvaStorySection() {
             <p className="relative text-[11px] font-semibold uppercase tracking-[0.28em]">
               <GradientShimmer text={KANVA_STORY.eyebrow} from={KANVA_ACCENTS.gold} to={KANVA_ACCENTS.sky} />
             </p>
-            <BlurTextHeading
-              text={KANVA_STORY.title}
+            <SplitJoinHeading
+              left="From Eastern Logica"
+              right="to Logica Infoway"
               className="relative mt-4 font-display text-[clamp(1.9rem,3.6vw,3rem)] font-semibold leading-[1.1] tracking-[-0.03em]"
               color={KANVA_ACCENTS.cyan}
             />
