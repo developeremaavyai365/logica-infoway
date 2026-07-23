@@ -19,20 +19,7 @@ function ExplosiveHeading({ text, color }: { text: string; color: string }) {
  *  non-animated block. */
 export function KanvaPhilosophySection() {
   return (
-    <section className="relative overflow-hidden bg-neutral-950 px-6 py-20 lg:px-10 lg:py-28">
-      <video
-        src="/videos/philosophy-bg.mp4"
-        muted
-        loop
-        playsInline
-        autoPlay
-        preload="metadata"
-        aria-hidden
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      {/* Dark wash keeps the video visible while giving the text enough contrast */}
-      <div className="absolute inset-0 bg-neutral-950/70" />
-
+    <section className="relative overflow-hidden bg-white px-6 py-20 lg:px-10 lg:py-28">
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.04em]">
           <ExplosiveHeading text="Built on trust, not just transactions" color={KANVA_ACCENTS.mint} />
@@ -40,7 +27,7 @@ export function KanvaPhilosophySection() {
 
         <div className="mt-10 space-y-6 text-left">
           {KANVA_PHILOSOPHY.map((pillar) => (
-            <p key={pillar.id} className="text-base leading-relaxed text-white/80 lg:text-lg">
+            <p key={pillar.id} className="text-base leading-relaxed text-neutral-600 lg:text-lg">
               <span className="font-display font-semibold" style={{ color: pillar.accent }}>
                 {pillar.title}.
               </span>{" "}

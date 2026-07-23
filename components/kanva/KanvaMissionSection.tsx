@@ -8,20 +8,7 @@ import { KANVA_ACCENTS, KANVA_MISSION } from "@/lib/kanva";
  *  Copy is the company's real published philosophy statement (Careers page). */
 export function KanvaMissionSection() {
   return (
-    <section className="relative overflow-hidden bg-neutral-950 px-6 py-28 lg:py-40">
-      <video
-        src="/videos/mission-bg.mp4"
-        muted
-        loop
-        playsInline
-        autoPlay
-        preload="metadata"
-        aria-hidden
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-      {/* Dark wash keeps the video visible while giving the text enough contrast */}
-      <div className="absolute inset-0 bg-neutral-950/70" />
-
+    <section className="relative overflow-hidden bg-white px-6 py-28 lg:py-40">
       <motion.div
         variants={staggerContainer}
         initial="hidden"
@@ -48,7 +35,7 @@ export function KanvaMissionSection() {
             <motion.p
               key={i}
               variants={fadeUp}
-              className="text-base leading-relaxed text-white/80 lg:text-lg"
+              className="text-base leading-relaxed text-neutral-600 lg:text-lg"
             >
               {p}
             </motion.p>
