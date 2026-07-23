@@ -29,8 +29,6 @@ export function KanvaPhilosophySection() {
         sizes="100vw"
         className="object-cover object-top"
       />
-      {/* Light wash keeps the photo visible while giving the text enough contrast */}
-      <div className="absolute inset-0 bg-white/85" />
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
         <h2 className="font-display text-[clamp(2rem,4.5vw,3.5rem)] font-semibold leading-[1.08] tracking-[-0.04em]">
