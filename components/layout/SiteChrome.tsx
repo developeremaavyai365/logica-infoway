@@ -13,6 +13,7 @@ const CINEMATIC_PREFIXES = [
   "/media",
   "/about",
   "/investor",
+  "/careers",
 ];
 
 function usesCinematicChrome(pathname: string) {
