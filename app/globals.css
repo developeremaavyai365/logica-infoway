@@ -186,6 +186,50 @@
   color: var(--liquid-ink, #fff);
 }
 
+/* Explosive hover heading — a dual radial-gradient burst fires outward
+   behind the text on hover/scale-up. */
+.explosive-text {
+  position: relative;
+  display: inline-block;
+  transition: transform 0.3s ease-out;
+}
+.explosive-text:hover {
+  transform: scale(1.06);
+}
+.explosive-text:hover::before,
+.explosive-text:hover::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 200%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  animation: explosive-burst 0.8s ease-out forwards;
+}
+.explosive-text:hover::before {
+  background: radial-gradient(circle, rgba(255, 0, 150, 0.6), transparent);
+  z-index: -1;
+}
+.explosive-text:hover::after {
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.6), transparent);
+  z-index: -2;
+}
+@keyframes explosive-burst {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
 /* Footer social icons — brand-colour panel slides up to fill the circle on
    hover while the icon flips (rotateY) and turns white. Each link sets
    --fill (its own brand colour) via inline style. */
