@@ -67,7 +67,16 @@ export function CategoryBrowser({
     [initialBrand, priceMin, priceMax],
   );
 
+  const [queryInput, setQueryInput] = useState(initialQuery);
   const [query, setQuery] = useState(initialQuery);
+
+  // Debounce the raw keystrokes before they hit the filter — the input
+  // stays instantly responsive, while the (layout-animated) grid below
+  // only re-settles once typing pauses instead of thrashing every key.
+  useEffect(() => {
+    const id = setTimeout(() => setQuery(queryInput), 220);
+    return () => clearTimeout(id);
+  }, [queryInput]);
   const [sort, setSort] = useState<SortKey>("featured");
   const [sel, setSel] = useState<FilterSelection>(emptySelection);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -214,15 +223,18 @@ export function CategoryBrowser({
           <div className="relative w-full max-w-sm">
             <LuSearch className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-neutral-400" />
             <input
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              value={queryInput}
+              onChange={(e) => setQueryInput(e.target.value)}
               placeholder="Search this category..."
               className="w-full rounded-full border border-neutral-200 bg-neutral-100 py-2.5 pl-10 pr-10 text-sm text-neutral-900 placeholder:text-neutral-400 outline-none transition-colors focus:border-neutral-400"
             />
-            {query && (
+            {queryInput && (
               <button
                 type="button"
-                onClick={() => setQuery("")}
+                onClick={() => {
+                  setQueryInput("");
+                  setQuery("");
+                }}
                 aria-label="Clear search"
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400 hover:text-neutral-900"
               >

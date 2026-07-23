@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { formatINR, type Product } from "@/lib/products";
-import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
+import { easeOutExpo } from "@/lib/motion";
 import { useShopStore } from "@/components/shop/store";
 import { ProductMediaFlip } from "@/components/shop/ProductMediaFlip";
 import { cn } from "@/lib/utils";
@@ -27,17 +27,20 @@ export function ProductGridFlat({
 
   return (
     <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="show"
-      viewport={viewportOnce}
+      layout
       className="grid grid-cols-2 gap-x-4 gap-y-10 sm:grid-cols-3 lg:grid-cols-4"
     >
       {products.map((product) => {
         const wished = ready && inWishlist(product.id);
 
         return (
-          <motion.div key={product.id} variants={fadeUp}>
+          <motion.div
+            key={product.id}
+            layout
+            initial={{ opacity: 0, scale: 0.94, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.32, ease: easeOutExpo }}
+          >
             <Link
               href={`/product/${product.id}`}
               className="group flex flex-col items-center text-center"
