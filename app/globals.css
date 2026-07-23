@@ -280,6 +280,64 @@
   transform: translateX(0);
 }
 
+/* Split-flap hover heading — an underline sweeps across and two
+   half-height duplicates slide in from above/below to reveal the text. */
+.split-flap {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  cursor: pointer;
+  color: transparent;
+}
+.split-flap::before {
+  content: "";
+  position: absolute;
+  left: -50%;
+  top: 50%;
+  width: 50%;
+  border-bottom: solid 4px var(--flap-color, #fff);
+  transition: transform 0.5s cubic-bezier(1, -0.04, 0, 1.16);
+}
+.split-flap:hover::before {
+  transform: translateX(220%);
+}
+.split-flap-half {
+  display: block;
+  position: absolute;
+  inset: 0;
+  height: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+.split-flap-top {
+  top: 0;
+}
+.split-flap-bottom {
+  bottom: 0;
+  top: auto;
+}
+.split-flap-half::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  right: 0;
+  color: var(--flap-color, #fff);
+  transition: transform 0.3s ease-out;
+}
+.split-flap-top::before {
+  top: 0;
+  transform: translateY(-100%);
+}
+.split-flap-bottom::before {
+  bottom: 0;
+  transform: translateY(100%);
+}
+.split-flap:hover .split-flap-top::before,
+.split-flap:hover .split-flap-bottom::before {
+  transform: translateY(0);
+  transition-delay: 0.3s;
+}
+
 /* Footer social icons — brand-colour panel slides up to fill the circle on
    hover while the icon flips (rotateY) and turns white. Each link sets
    --fill (its own brand colour) via inline style. */

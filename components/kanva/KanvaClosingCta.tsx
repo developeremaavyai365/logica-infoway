@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { LuArrowRight, LuPhone } from "react-icons/lu";
 import { fadeUp, staggerContainer, viewportOnce } from "@/lib/motion";
 import { KANVA_ACCENTS, KANVA_CLOSING_CTA } from "@/lib/kanva";
-import { BlurTextHeading, GradientShimmer } from "@/components/kanva/KanvaTextEffects";
+import { GradientShimmer, SplitFlapHeading } from "@/components/kanva/KanvaTextEffects";
 
 /** Final conversion moment before the footer — real /shop path + published order line. */
 export function KanvaClosingCta() {
@@ -34,7 +34,7 @@ export function KanvaClosingCta() {
         <motion.p variants={fadeUp} className="text-[11px] font-semibold uppercase tracking-[0.28em]">
           <GradientShimmer text={KANVA_CLOSING_CTA.eyebrow} from={KANVA_ACCENTS.gold} to={KANVA_ACCENTS.peach} />
         </motion.p>
-        <BlurTextHeading
+        <SplitFlapHeading
           text={KANVA_CLOSING_CTA.title}
           className="mt-4 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-[1.08] tracking-[-0.03em]"
           color={KANVA_ACCENTS.violet}

@@ -99,6 +99,33 @@ export function SplitJoinHeading({
   );
 }
 
+/** Split-flap hover heading — text sits invisible (only a thin underline
+ *  showing) until hovered, at which point the underline sweeps across and
+ *  two half-height duplicates slide in from above/below to reveal it, like
+ *  a split-flap display. Pointer-driven (:hover), not scroll-triggered. */
+export function SplitFlapHeading({
+  text,
+  className,
+  color,
+  as: Tag = "h2",
+}: {
+  text: string;
+  className?: string;
+  color: string;
+  as?: "h2" | "h3";
+}) {
+  return (
+    <Tag
+      className={cn("split-flap", className)}
+      style={{ "--flap-color": color } as React.CSSProperties}
+    >
+      {text}
+      <span className="split-flap-half split-flap-top" data-text={text} aria-hidden />
+      <span className="split-flap-half split-flap-bottom" data-text={text} aria-hidden />
+    </Tag>
+  );
+}
+
 /** reactbits-style "GradientText" shimmer — animated gradient sweep clipped
  *  through the text. Pass two accent colors to match the section's palette. */
 export function GradientShimmer({
