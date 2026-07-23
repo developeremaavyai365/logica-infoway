@@ -280,13 +280,17 @@
   transform: translateX(0);
 }
 
-/* Split-flap hover heading — an underline sweeps across and two
-   half-height duplicates slide in from above/below to reveal the text. */
+/* Split-flap hover heading — visible normally; on hover the base text
+   hides and an underline sweeps across while two half-height duplicates
+   slide in from above/below to reconstruct it. */
 .split-flap {
   position: relative;
   display: inline-block;
   overflow: hidden;
   cursor: pointer;
+  color: var(--flap-color, #fff);
+}
+.split-flap:hover {
   color: transparent;
 }
 .split-flap::before {
