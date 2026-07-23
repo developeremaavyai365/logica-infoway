@@ -33,12 +33,23 @@ export function PriceRangeSlider({
         <span>{formatINR(hi)}</span>
       </div>
 
-      <div className="relative mt-4 h-4">
+      <div className="relative mt-6 h-4">
         <div className="absolute left-0 right-0 top-1/2 h-1.5 -translate-y-1/2 rounded-full bg-neutral-200" />
         <div
-          className="absolute top-1/2 h-1.5 -translate-y-1/2 rounded-full"
-          style={{ left: `${pct(lo)}%`, right: `${100 - pct(hi)}%`, backgroundColor: accent }}
-        />
+          className="price-cube"
+          style={
+            {
+              left: `${pct(lo)}%`,
+              width: `${pct(hi) - pct(lo)}%`,
+              "--cube-accent": accent,
+            } as React.CSSProperties
+          }
+        >
+          <div className="price-cube-a" />
+          <div className="price-cube-b" />
+          <div className="price-cube-c" />
+          <div className="price-cube-d" />
+        </div>
         <input
           type="range"
           min={min}

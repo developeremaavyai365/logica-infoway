@@ -156,6 +156,45 @@
   background: transparent;
 }
 
+/* Pseudo-3D "cube" fill for the price range slider — a perspective block
+   sized to span the selected [min, max], sitting behind the real (invisible
+   except for the thumbs) .price-range inputs above, which still own the
+   actual value/drag logic. --cube-accent sets the block's colour. */
+.price-cube {
+  position: absolute;
+  top: 50%;
+  height: 22px;
+  margin-top: -11px;
+  transform-style: preserve-3d;
+  perspective: 260px;
+  pointer-events: none;
+}
+.price-cube-a,
+.price-cube-b,
+.price-cube-c,
+.price-cube-d {
+  position: absolute;
+  inset: 0;
+  background: var(--cube-accent, #0f9d58);
+  border-radius: 3px;
+}
+.price-cube-b {
+  transform: rotateX(75deg) translateY(-22px);
+  transform-origin: 0% 0%;
+}
+.price-cube-c {
+  transform: rotateX(75deg);
+  transform-origin: 100% 100%;
+  opacity: 0.55;
+}
+.price-cube-d {
+  transform: translateZ(-22px) translateY(-5.5px);
+  opacity: 0.55;
+}
+.price-cube-c {
+  box-shadow: 0 12px 8px -8px rgba(0, 0, 0, 0.35), 0 16px 6px -6px rgba(0, 0, 0, 0.2);
+}
+
 /* Liquid-fill button hover — a colour fill sweeps in from the left on
    hover, text switches to --liquid-ink. Lives on a ::before overlay (not
    the button's own background) so it layers over an existing solid bg or
