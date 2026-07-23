@@ -38,8 +38,8 @@ export function KanvaMissionSection() {
         </motion.p>
         <motion.h2
           variants={fadeUp}
-          className="mt-5 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-[1.1] tracking-[-0.03em]"
-          style={{ color: KANVA_ACCENTS.sky }}
+          className="masked-heading mt-5 font-display text-[clamp(2rem,4.5vw,3.25rem)] font-semibold leading-[1.1] tracking-[-0.03em]"
+          style={{ "--mask-image": "url(/images/showcase-computing-bg.png)" } as React.CSSProperties}
         >
           {KANVA_MISSION.title}
         </motion.h2>

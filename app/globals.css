@@ -234,6 +234,28 @@
   }
 }
 
+/* Masked-image heading — text is clipped to a moving background image
+   instead of a flat colour. Each heading sets --mask-image via inline
+   style (bg-clip: text + a slow left-right pan). */
+.masked-heading {
+  color: transparent;
+  background-image: var(--mask-image);
+  background-size: 200%;
+  background-position: 0 50%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: masked-heading-pan 6s infinite alternate linear;
+}
+@keyframes masked-heading-pan {
+  0% {
+    background-position: 0 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
 /* Footer social icons — brand-colour panel slides up to fill the circle on
    hover while the icon flips (rotateY) and turns white. Each link sets
    --fill (its own brand colour) via inline style. */
