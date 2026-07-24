@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiHeart, FiMenu, FiSearch, FiShoppingBag, FiUser, FiX } from "react-icons/fi";
 import { LuChevronDown } from "react-icons/lu";
@@ -34,6 +34,93 @@ function CountBadge({ count }: { count: number }) {
 function isActive(pathname: string, href: string) {
   if (href === "/") return pathname === "/";
   return pathname === href || pathname.startsWith(href + "/");
+}
+
+/** Types `text` out, pauses, deletes it, pauses, and loops — used for the
+ *  header search bar's placeholder. */
+function useTypewriter(text: string, { typingMs = 55, pauseMs = 1500, deletingMs = 30, restMs = 500 } = {}) {
+  const [display, setDisplay] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    let phase: "typing" | "pausing" | "deleting" | "resting" = "typing";
+    let timeout: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      if (phase === "typing") {
+        i++;
+        setDisplay(text.slice(0, i));
+        if (i >= text.length) {
+          phase = "pausing";
+          timeout = setTimeout(tick, pauseMs);
+          return;
+        }
+        timeout = setTimeout(tick, typingMs);
+      } else if (phase === "pausing") {
+        phase = "deleting";
+        timeout = setTimeout(tick, deletingMs);
+      } else if (phase === "deleting") {
+        i--;
+        setDisplay(text.slice(0, i));
+        if (i <= 0) {
+          phase = "resting";
+          timeout = setTimeout(tick, restMs);
+          return;
+        }
+        timeout = setTimeout(tick, deletingMs);
+      } else {
+        phase = "typing";
+        timeout = setTimeout(tick, typingMs);
+      }
+    };
+
+    timeout = setTimeout(tick, typingMs);
+    return () => clearTimeout(timeout);
+  }, [text, typingMs, pauseMs, deletingMs, restMs]);
+
+  return display;
+}
+
+/** Header search — a plain icon that expands into a real search field on
+ *  hover/focus, with an animated typewriter placeholder. Submits to the
+ *  shop's existing ?q= search (the same real filter the homepage search
+ *  and CategoryBrowser's own search box already use). */
+function HeaderSearch() {
+  const router = useRouter();
+  const [value, setValue] = useState("");
+  const inputRef = useRef<HTMLInputElement>(null);
+  const typed = useTypewriter("Search the latest products");
+
+  function onSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const q = value.trim();
+    router.push(q ? `/shop?q=${encodeURIComponent(q)}` : "/shop");
+    inputRef.current?.blur();
+  }
+
+  return (
+    <form
+      onSubmit={onSubmit}
+      className="group/search relative flex h-10 items-center rounded-full text-white/90 transition-colors hover:bg-white/10 focus-within:bg-white/10"
+    >
+      <button
+        type="submit"
+        aria-label="Search"
+        className="relative z-10 inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+      >
+        <FiSearch className="h-[18px] w-[18px]" />
+      </button>
+      <input
+        ref={inputRef}
+        type="text"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+        placeholder={typed}
+        aria-label="Search the latest products"
+        className="w-0 bg-transparent text-sm text-white opacity-0 outline-none transition-[width,opacity] duration-300 ease-out placeholder:text-white/50 group-hover/search:w-48 group-hover/search:pr-4 group-hover/search:opacity-100 group-focus-within/search:w-48 group-focus-within/search:pr-4 group-focus-within/search:opacity-100"
+      />
+    </form>
+  );
 }
 
 function isExternal(href: string) {
@@ -301,15 +388,7 @@ export function KanvaHeader() {
             >
               {mobileOpen ? <FiX className="h-5 w-5" /> : <FiMenu className="h-5 w-5" />}
             </button>
-            <Link
-              href="/shop"
-              aria-label="Search"
-              style={{ "--i": "#56CCF2", "--j": "#2F80ED" } as React.CSSProperties}
-              className="dock-btn inline-flex h-10 w-10 items-center justify-center rounded-full text-white/90"
-            >
-              <FiSearch className="dock-icon h-[18px] w-[18px]" />
-              <span className="dock-title">Search</span>
-            </Link>
+            <HeaderSearch />
             <Link
               href="/account"
               aria-label="Account"
