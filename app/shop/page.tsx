@@ -1,9 +1,10 @@
+import { redirect } from "next/navigation";
 import { KanvaLaptopSegment } from "@/components/kanva/KanvaLaptopSegment";
 import { KanvaShopShowcase } from "@/components/kanva/KanvaShopShowcase";
 import { CategoryBrowser } from "@/components/shop/CategoryBrowser";
 import { ShopVideoHero } from "@/components/shop/ShopVideoHero";
 import { KANVA_ACCENTS } from "@/lib/kanva";
-import { PRODUCTS } from "@/lib/products";
+import { matchCategoryFromQuery, PRODUCTS } from "@/lib/products";
 
 export const metadata = {
   title: "Shop | Logica Infoway",
@@ -19,6 +20,13 @@ export default function ShopPage({
 }) {
   const query = searchParams.q?.trim() ?? "";
   const brand = searchParams.brand?.trim() ?? "";
+
+  // Searching a category name ("mobiles", "laptop", "Mobile Phones") jumps
+  // straight to that category page instead of a literal text search.
+  if (query) {
+    const category = matchCategoryFromQuery(query);
+    if (category) redirect(`/shop/${category.slug}`);
+  }
 
   // Search / brand results view
   if (query || brand) {

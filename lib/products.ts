@@ -310,6 +310,29 @@ export function getCategory(slug: string): ShopCategory | undefined {
   return SHOP_CATEGORIES.find((c) => c.slug === canonical);
 }
 
+/** Resolves a free-text search query to a real shop category when the
+ *  query IS a category (slug, alias, or label — "mobiles", "laptop",
+ *  "Mobile Phones", plural/singular either way), so typing a category
+ *  name jumps straight to that category page instead of a literal
+ *  (and usually empty) name/brand text search. */
+export function matchCategoryFromQuery(query: string): ShopCategory | undefined {
+  const trimmed = query.trim();
+  if (!trimmed) return undefined;
+
+  const bySlug = (s: string) => getCategory(s.toLowerCase().replace(/\s+/g, "-"));
+  const foldPlural = (s: string) => (s.endsWith("s") ? s.slice(0, -1) : `${s}s`);
+
+  return (
+    bySlug(trimmed) ??
+    bySlug(foldPlural(trimmed)) ??
+    SHOP_CATEGORIES.find((c) => {
+      const label = c.label.toLowerCase();
+      const q = trimmed.toLowerCase();
+      return label === q || label === foldPlural(q) || foldPlural(label) === q;
+    })
+  );
+}
+
 /** Live catalog scraped from logicainfoway.com/shop — real names, prices,
  *  photos, category and brand for every product on the shop grid. */
 // Decode stray HTML entities (&amp;, &#8243; etc.) present in the scraped
