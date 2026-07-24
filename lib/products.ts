@@ -194,8 +194,7 @@ export const SHOP_CATEGORIES: ShopCategory[] = [
       "Business-grade portables and gaming powerhouses from every major brand — configured, imaged and warranty-backed.",
     accent: KANVA_ACCENTS.mint,
     icon: "laptop",
-    video: "/videos/laptops-segment.mp4",
-    videoFit: "cover",
+    image: "/images/laptops-bg.jpg",
   },
   {
     slug: "mobile-phones",
