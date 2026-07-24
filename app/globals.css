@@ -195,6 +195,83 @@
   box-shadow: 0 12px 8px -8px rgba(0, 0, 0, 0.35), 0 16px 6px -6px rgba(0, 0, 0, 0.2);
 }
 
+/* Dropping-text rotating heading — phrases tumble in one at a time, hold,
+   then fall away; the final phrase in the cycle bursts outward instead
+   (finale variant) before the loop restarts from the first. Each phrase is
+   an absolutely-positioned sibling with a staggered animation-delay set
+   inline, so the container's own height is set to fit the tallest phrase. */
+.dropping-heading {
+  position: relative;
+  display: block;
+  min-height: 2.3em;
+}
+.dropping-heading > span {
+  position: absolute;
+  inset: 0;
+  display: block;
+  font-size: 0;
+  opacity: 0;
+  transform: rotate(-18deg);
+  animation: dropping-heading-roll 15s linear infinite;
+}
+.dropping-heading > span.dropping-heading-finale {
+  animation-name: dropping-heading-finale;
+}
+@keyframes dropping-heading-roll {
+  0% {
+    font-size: 0;
+    opacity: 0;
+    transform: translateY(0) rotate(-18deg);
+  }
+  3% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  5%,
+  16% {
+    font-size: inherit;
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+  }
+  20% {
+    font-size: 0;
+    opacity: 0;
+    transform: translateY(2.5em) rotate(10deg);
+  }
+  100% {
+    font-size: 0;
+    opacity: 0;
+    transform: translateY(0) rotate(10deg);
+  }
+}
+@keyframes dropping-heading-finale {
+  0% {
+    font-size: 0;
+    opacity: 0;
+    transform: translateY(0) rotate(-18deg) scale(1);
+  }
+  3% {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  5%,
+  16% {
+    font-size: inherit;
+    opacity: 1;
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  19% {
+    font-size: inherit;
+    opacity: 0;
+    transform: scale(2.4);
+  }
+  100% {
+    font-size: 0;
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
 /* Liquid-fill button hover — a colour fill sweeps in from the left on
    hover, text switches to --liquid-ink. Lives on a ::before overlay (not
    the button's own background) so it layers over an existing solid bg or
