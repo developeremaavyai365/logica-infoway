@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeUp, staggerContainer } from "@/lib/motion";
 import { StatCounter } from "@/components/ui/StatCounter";
@@ -14,6 +15,8 @@ interface ShopHeroProps {
   subtitle: string;
   video?: string;
   videoFit?: "cover" | "contain";
+  /** Static full-bleed hero photo — used instead of `video` when set. */
+  image?: string;
   stats?: { value: string; label: string }[];
 }
 
@@ -25,9 +28,11 @@ export function ShopHero({
   subtitle,
   video,
   videoFit = "cover",
+  image,
   stats,
 }: ShopHeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const hasMedia = Boolean(video || image);
 
   useEffect(() => {
     videoRef.current?.play().catch(() => {});
@@ -37,7 +42,7 @@ export function ShopHero({
     <section
       className={cn(
         "relative flex min-h-[68svh] w-full items-center overflow-hidden pt-[4.5rem]",
-        video ? "bg-neutral-950" : "bg-white",
+        hasMedia ? "bg-neutral-950" : "bg-white",
       )}
     >
       {video ? (
@@ -56,6 +61,12 @@ export function ShopHero({
               videoFit === "contain" ? "object-contain" : "object-cover",
             )}
           />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/30" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
+        </>
+      ) : image ? (
+        <>
+          <Image src={image} alt="" fill priority aria-hidden sizes="100vw" className="object-cover" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/30" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/40" />
         </>
@@ -87,7 +98,7 @@ export function ShopHero({
           variants={fadeUp}
           className={cn(
             "mt-4 max-w-3xl font-display text-[clamp(2.5rem,6vw,4.75rem)] font-semibold leading-[1.02] tracking-[-0.04em]",
-            video ? "text-white" : "text-neutral-900",
+            hasMedia ? "text-white" : "text-neutral-900",
           )}
         >
           {title}
@@ -102,7 +113,7 @@ export function ShopHero({
           variants={fadeUp}
           className={cn(
             "mt-5 max-w-xl text-base leading-relaxed lg:text-lg",
-            video ? "text-white/60" : "text-neutral-500",
+            hasMedia ? "text-white/60" : "text-neutral-500",
           )}
         >
           {subtitle}
@@ -115,7 +126,7 @@ export function ShopHero({
                 key={s.label}
                 className={cn(
                   "font-display text-2xl font-bold lg:text-3xl",
-                  video ? "text-white" : "text-neutral-900",
+                  hasMedia ? "text-white" : "text-neutral-900",
                 )}
               >
                 <StatCounter value={s.value} />

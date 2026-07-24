@@ -15,6 +15,8 @@ export interface ShopCategory {
   /** Optional cinematic hero media reused from the homepage. */
   video?: string;
   videoFit?: "cover" | "contain";
+  /** Static full-bleed hero photo — used instead of `video` when set. */
+  image?: string;
 }
 
 export interface Product {
@@ -203,8 +205,7 @@ export const SHOP_CATEGORIES: ShopCategory[] = [
       "The latest 5G smartphones from brands you trust, with genuine warranty and enterprise supply options.",
     accent: KANVA_ACCENTS.sky,
     icon: "phone",
-    video: "/videos/showcase-mobile.mp4",
-    videoFit: "contain",
+    image: "/images/mobile-phones-bg.jpg",
   },
   {
     slug: "accessories",

@@ -106,6 +106,7 @@ export default function CategoryPage({
         subtitle={cat.description}
         video={cat.video}
         videoFit={cat.videoFit}
+        image={cat.image}
       />
       <section className="mx-auto max-w-[90rem] px-6 py-16 lg:px-10">
         <CategoryBrowser
