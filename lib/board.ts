@@ -34,7 +34,7 @@ export const BOARD_MEMBERS: BoardMember[] = [
     name: "Mr. Rakesh Kumar Goel",
     designation: "Non-Executive Director",
     photo: "/about/board/rakesh-kumar-goel.png",
-    details: ["Mechanical Engineer with 58 years of experience"],
+    details: ["Mechanical Engineer with 59 years of experience"],
   },
   {
     name: "Mr. Dinesh Arya",
@@ -52,7 +52,7 @@ export const BOARD_MEMBERS: BoardMember[] = [
     photo: "/about/board/nil-kamal-samanta.png",
     details: [
       "Appointed August 26, 2022, for a 5-year term",
-      "39 years in banking; retired as Deputy Zonal Manager, Bank of India",
+      "40 years in banking; retired as Deputy Zonal Manager, Bank of India",
     ],
   },
   {
@@ -60,7 +60,7 @@ export const BOARD_MEMBERS: BoardMember[] = [
     designation: "Independent Director",
     photo: "/about/board/vinita-saraf.png",
     details: [
-      "Appointed August 29, 2022, for an 8-year term",
+      "Appointed August 29, 2022, for a 5-year term",
       "Bachelor in Commerce (Honours); NISM VIII certified",
     ],
   },
@@ -68,13 +68,13 @@ export const BOARD_MEMBERS: BoardMember[] = [
     name: "Mr. Sundeep Mishra",
     designation: "Chief Operating Officer",
     photo: "/about/board/sundeep-mishra.png",
-    details: ["Appointed May 6, 2022", "~49 years in marketing, sales, and business development"],
+    details: ["Appointed May 6, 2022", "~50 years in marketing, sales, and business development"],
   },
   {
     name: "Mr. Deepak Kumar Jha",
     designation: "Chief Financial Officer",
     photo: "/about/board/deepak-kumar-jha.png",
-    details: ["Appointed July 1, 2022", "~22 years in Accounts & Finance; associated with the company since January 2012"],
+    details: ["Appointed July 1, 2022", "~23 years in Accounts & Finance; associated with the company since January 2012"],
   },
   {
     name: "Ms. Priyanka Gera",
@@ -86,7 +86,7 @@ export const BOARD_MEMBERS: BoardMember[] = [
     name: "Mr. Ankur Bhutani",
     designation: "Chief Operating Officer (North)",
     photo: "/about/board/ankur-bhutani.png",
-    details: ["Appointed July 18, 2023", "22+ years with major MNCs including HP, Dell, and Samsung"],
+    details: ["Appointed July 18, 2023", "23+ years with major MNCs including HP, Dell, and Samsung"],
   },
   {
     name: "Mr. Kshitij Goel",
